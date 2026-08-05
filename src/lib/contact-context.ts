@@ -10,5 +10,8 @@ export async function getContactContext(email: string) {
     admin.from("lead_intelligence_cards").select("*").eq("contact_id", contact.id).order("generated_at", { ascending: false }).limit(1).maybeSingle(),
     admin.from("call_activities").select("*").eq("contact_id", contact.id).order("created_at", { ascending: false }).limit(5)
   ]);
-  return { contact, company: companyResult.data, signals: signalsResult.data, card: cardResult.data, activities: activityResult.data ?? [] };
+  const savedCard = cardResult.data;
+  const objectionHandles = savedCard?.objection_handles;
+  const isCurrentCard = Boolean(objectionHandles && typeof objectionHandles === "object" && "not_a_priority" in objectionHandles);
+  return { contact, company: companyResult.data, signals: signalsResult.data, card: isCurrentCard ? savedCard : null, activities: activityResult.data ?? [] };
 }
