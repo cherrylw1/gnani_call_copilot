@@ -6,7 +6,7 @@ export async function openRouterJson<T>(prompt: string, maxTokens: number): Prom
   if (!key || !primary || !fallback) throw new Error("OpenRouter is not configured.");
   const call = async (model: string) => {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 20_000);
+    const timeout = setTimeout(() => controller.abort(), Number(process.env.OPENROUTER_TIMEOUT_MS || 45_000));
     let response: Response;
     try {
       response = await fetch("https://openrouter.ai/api/v1/chat/completions", { method: "POST", signal: controller.signal, headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model, temperature: 0.25, max_tokens: maxTokens, response_format: { type: "json_object" }, messages: [{ role: "user", content: prompt }] }) });

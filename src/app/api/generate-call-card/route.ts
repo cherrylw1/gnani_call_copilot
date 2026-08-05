@@ -99,7 +99,7 @@ export async function POST(request: Request) {
     let card = baseCard;
     let model = "rule-based";
     try {
-      const result = await openRouterJson<typeof card>(callCardPrompt(context), 1100);
+      const result = await openRouterJson<typeof card>(callCardPrompt(context), 1800);
       const generated = result.data;
       card = {
         ...baseCard,
