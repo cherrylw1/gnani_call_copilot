@@ -87,7 +87,7 @@ const fallback = (context: NonNullable<Awaited<ReturnType<typeof getContactConte
 
 export async function POST(request: Request) {
   try {
-    const { email, refresh } = z.object({ email: z.string().email(), refresh: z.boolean().optional() }).parse(await request.json());
+    const { email, refresh, strict } = z.object({ email: z.string().email(), refresh: z.boolean().optional(), strict: z.boolean().optional() }).parse(await request.json());
     const initialContext = await getContactContext(email);
     if (!initialContext) return NextResponse.json({ error: "No contact found for this email." }, { status: 404 });
     if (!refresh && initialContext.card?.brief_recipe_version === CALL_CARD_RECIPE_VERSION && isCurrentElevatorPitches(initialContext.card.elevator_pitches) && isCurrentAccountBrief(initialContext.card.account_brief)) {
@@ -112,7 +112,8 @@ export async function POST(request: Request) {
         objection_handles: { ...baseCard.objection_handles, ...(generated.objection_handles && typeof generated.objection_handles === "object" ? generated.objection_handles : {}) }
       };
       model = result.model;
-    } catch {
+    } catch (modelError) {
+      if (strict) throw modelError;
       // A research-backed fallback lets the caller proceed if a model is unavailable.
     }
 
