@@ -1,9 +1,18 @@
-export const CALL_CARD_RECIPE_VERSION = "2026-08-05.1";
+export const CALL_CARD_RECIPE_VERSION = "2026-08-05.2";
 
 export type ElevatorPitches = {
   detailed: string;
   medium: string;
   quick: string;
+};
+
+export type AccountBrief = {
+  summary: string;
+  services: string[];
+  operating_facts: string[];
+  interaction_context: string;
+  role_context: string;
+  workflow_hypotheses: string[];
 };
 
 const wordCount = (value: string) => value.trim().split(/\s+/).filter(Boolean).length;
@@ -21,6 +30,17 @@ export function isCurrentElevatorPitches(value: unknown): value is ElevatorPitch
   return isValidPitch(pitches.detailed, 65, 90)
     && isValidPitch(pitches.medium, 42, 60)
     && isValidPitch(pitches.quick, 28, 36, 1);
+}
+
+export function isCurrentAccountBrief(value: unknown): value is AccountBrief {
+  if (!value || typeof value !== "object") return false;
+  const brief = value as Record<string, unknown>;
+  return typeof brief.summary === "string" && brief.summary.trim().length > 80
+    && Array.isArray(brief.services) && brief.services.length > 0
+    && Array.isArray(brief.operating_facts) && brief.operating_facts.length > 0
+    && typeof brief.interaction_context === "string" && brief.interaction_context.trim().length > 20
+    && typeof brief.role_context === "string" && brief.role_context.trim().length > 20
+    && Array.isArray(brief.workflow_hypotheses) && brief.workflow_hypotheses.length > 0;
 }
 
 export function createFallbackElevatorPitches({ firstName, companyName, role }: { firstName?: string | null; companyName?: string | null; role?: string | null }): ElevatorPitches {

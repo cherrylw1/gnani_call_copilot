@@ -1,4 +1,4 @@
-import { CALL_CARD_RECIPE_VERSION, isCurrentElevatorPitches } from "./call-card-recipe";
+import { CALL_CARD_RECIPE_VERSION, isCurrentAccountBrief, isCurrentElevatorPitches } from "./call-card-recipe";
 import { createAdminSupabaseClient } from "./supabase/admin";
 
 export async function getContactContext(email: string) {
@@ -22,6 +22,7 @@ export async function getContactContext(email: string) {
     && "not_a_priority" in objectionHandles
     && savedCard?.brief_recipe_version === CALL_CARD_RECIPE_VERSION
     && isCurrentElevatorPitches(savedCard.elevator_pitches)
+    && isCurrentAccountBrief(savedCard.account_brief)
   );
   return { contact, company: companyResult.data, signals: signalsResult.data, card: isCurrentCard ? savedCard : null, activities: activityResult.data ?? [] };
 }
