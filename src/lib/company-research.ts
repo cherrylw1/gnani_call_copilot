@@ -56,7 +56,7 @@ export async function researchCompany(input: { domain?: string | null; companyNa
   let sources = homepage ? [homepage, ...extraPages].map(({ url, title, extracted }) => ({ url, title, extracted })) : [];
   let researchBasis = "Official company website and related pages";
   if (!sources.length) {
-    sources = await searchCompany(companyName, domain);
+    try { sources = await searchCompany(companyName, domain); } catch { sources = []; }
     researchBasis = "Public search result snippets; official site was unavailable to the researcher";
   }
   if (!sources.length) {
