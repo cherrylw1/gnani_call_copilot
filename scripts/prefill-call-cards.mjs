@@ -76,7 +76,7 @@ for (const contact of contacts) {
 
 const companyJobs = [...byCompany.keys()]
   .map((id) => companiesById.get(id))
-  .filter((company) => company.domain && !researchIsCurrent(company));
+  .filter((company) => !researchIsCurrent(company));
 let researched = 0;
 console.log(`Research stage: ${companyJobs.length} companies to prepare (${companies.length - companyJobs.length} already current).`);
 const researchFailures = await runPool(companyJobs, async (company) => {
