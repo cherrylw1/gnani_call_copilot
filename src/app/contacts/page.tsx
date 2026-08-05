@@ -1,0 +1,2 @@
+import { DataTablePage } from "@/components/data-table-page";
+export default function ContactsPage() { return <DataTablePage resource="contacts" title="Contacts" subtitle="Search your imported CCW prospects." columns={[{ key: "full_name", label: "Name" }, { key: "job_title", label: "Title" }, { key: "persona", label: "Persona" }, { key: "email", label: "Email" }, { key: "email_domain", label: "Domain" }, { key: "country", label: "Country" }, { key: "previous_outreach", label: "Previous outreach" }]} />; }

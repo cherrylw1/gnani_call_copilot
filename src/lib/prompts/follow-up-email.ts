@@ -1,0 +1,1 @@
+export const followUpEmailPrompt = (context: Record<string, unknown>) => `Write a human follow-up email from Sharath at gnani.ai. Under 140 words. No hype, no fabricated claims, no markdown. Return valid JSON: {"subject":"","body":"","email_type":""}. Context: ${JSON.stringify(context)}`;

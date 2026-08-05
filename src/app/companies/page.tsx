@@ -1,0 +1,2 @@
+import { DataTablePage } from "@/components/data-table-page";
+export default function CompaniesPage() { return <DataTablePage resource="companies" title="Companies" subtitle="Buyer, partner, and competitor review at a glance." columns={[{ key: "company_name", label: "Company" }, { key: "domain", label: "Domain" }, { key: "industry_auto_classified", label: "Industry" }, { key: "country_primary", label: "Country" }, { key: "buyer_partner_competitor_status", label: "Status" }, { key: "fit_score", label: "Fit score" }, { key: "research_status", label: "Research" }]} />; }

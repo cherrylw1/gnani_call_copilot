@@ -1,0 +1,1 @@
+export const companyResearchPrompt = (context: Record<string, unknown>) => `Summarize only this website evidence for an SDR at gnani.ai. Return valid JSON with company_summary, status, likely_use_cases, recommended_products, confidence, source_confidence. Do not make unsupported claims. Context: ${JSON.stringify(context)}`;

@@ -20,6 +20,9 @@ The CSV is Git-ignored and must not be committed.
 - Columns: 25
 - Unique emails: 1,673
 - Unique companies: 957
+- Unique email domains: 923
+- Missing email rows: 0
+- Duplicate email rows: 1
 
 ### Column names
 
@@ -78,6 +81,21 @@ The CSV is Git-ignored and must not be committed.
 | Healthcare Operations | 44 |
 | Consumer Services | 39 |
 | Healthcare & Life Sciences | 29 |
+
+### Top countries
+
+| Country | Contacts |
+|---|---:|
+| United States of America | 1,554 |
+| Canada | 44 |
+| United Kingdom | 17 |
+| Mexico | 11 |
+| Brazil | 10 |
+| India | 7 |
+| Australia | 4 |
+| Egypt | 3 |
+| Singapore | 3 |
+| South Africa | 3 |
 
 Known expectations:
 

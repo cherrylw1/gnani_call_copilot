@@ -1,0 +1,2 @@
+import { Circle } from "lucide-react";
+export function Topbar() { return <header className="flex h-14 items-center justify-between border-b border-zinc-800 bg-zinc-950 px-4 lg:px-7"><p className="text-sm text-zinc-400">Internal sales workspace</p><div className="flex items-center gap-2 text-xs text-zinc-500"><Circle className="size-2 fill-zinc-300 text-zinc-300" /> Ready for import</div></header>; }
