@@ -158,4 +158,7 @@ const summary = {
 const { error: updateError } = await supabase.from("call_log_imports").update({ imported_rows: imported, summary }).eq("id", importId);
 if (updateError) throw new Error(updateError.message);
 
-console.log(JSON.stringify({ importId, ...summary }, null, 2));
+const { data: tasksCreated, error: taskError } = await supabase.rpc("backfill_outreach_tasks");
+if (taskError) console.warn(`Call logs imported, but task backfill did not run: ${taskError.message}`);
+
+console.log(JSON.stringify({ importId, ...summary, tasksCreated: Number(tasksCreated ?? 0) }, null, 2));

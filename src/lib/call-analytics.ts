@@ -1,6 +1,8 @@
 export type CallLogRow = {
   id: string;
   call_id: string | null;
+  contact_id: string | null;
+  company_id: string | null;
   prospect_email: string;
   prospect_name: string;
   account_name: string;

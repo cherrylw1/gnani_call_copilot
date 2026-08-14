@@ -21,7 +21,7 @@ export async function loadCallReportSource() {
   if (callCountError || contactCountError || importError) {
     throw new Error(callCountError?.message || contactCountError?.message || importError?.message || "Could not load call data.");
   }
-  const select = "id,call_id,prospect_email,prospect_name,account_name,completed_at,call_source,prospect_status,call_type,purpose,call_status,call_notes,outcome,duration_seconds,shareable_link,from_number,to_number,job_title,persona_segment,industry";
+  const select = "id,call_id,contact_id,company_id,prospect_email,prospect_name,account_name,completed_at,call_source,prospect_status,call_type,purpose,call_status,call_notes,outcome,duration_seconds,shareable_link,from_number,to_number,job_title,persona_segment,industry";
   const pages = await Promise.all(Array.from({ length: Math.ceil((callCount ?? 0) / 1000) }, (_, index) => {
     const from = index * 1000;
     return admin.from("klenty_call_logs").select(select).order("completed_at", { ascending: false }).range(from, from + 999);
