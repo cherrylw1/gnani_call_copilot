@@ -4,7 +4,11 @@ import { z } from "zod";
 import { buildScript, classifySegment, type SegmentId } from "@/lib/ccw-executive-scripts";
 import { openRouterJson, openRouterText } from "@/lib/openrouter";
 
-export const practiceModeSchema = z.enum(["fish", "gpt_audio_mini", "gemini_live"]);
+// The two selectable modes deliberately use the same conversation brain. Only the
+// voice renderer changes, which keeps a practice scenario comparable across modes.
+// The legacy values remain accepted so an older, unfinished session can still be
+// read and completed after the upgrade.
+export const practiceModeSchema = z.enum(["fish", "gemini_tts", "gpt_audio_mini", "gemini_live"]);
 export const practiceDifficultySchema = z.enum(["receptive", "busy", "skeptical", "technical"]);
 export type PracticeMode = z.infer<typeof practiceModeSchema>;
 export type PracticeDifficulty = z.infer<typeof practiceDifficultySchema>;
@@ -16,11 +20,13 @@ export type PracticeContext = {
 };
 
 export type PracticeMessage = { role: "user" | "buyer"; text: string };
+export type PracticeScenario = Record<string, unknown>;
 
 type AudioReply = { reply: string; audioBase64: string; audioMimeType: string; model: string };
 
 const FISH_TTS_MODEL = "fish-audio/s2.1-pro-free:free";
 const GPT_AUDIO_MODEL = "openai/gpt-audio-mini";
+const GEMINI_TTS_MODEL = "google/gemini-3.1-flash-tts-preview";
 const TRANSCRIPTION_MODEL = "openai/whisper-large-v3";
 
 function getRouterKey() {
@@ -31,33 +37,22 @@ function getRouterKey() {
 
 export function getPracticeModelOptions() {
   const hasRouter = Boolean(process.env.OPENROUTER_API_KEY);
-  const geminiModel = process.env.OPENROUTER_GEMINI_LIVE_MODEL?.trim();
   return [
     {
       id: "fish" as const,
       label: "Fish Voice",
       model: process.env.OPENROUTER_FISH_TTS_MODEL || FISH_TTS_MODEL,
-      detail: "Fish voice with server transcription and the saved Gnani buyer scenario.",
+      detail: "Alternative voice renderer. A Fish voice ID can be locked in the deployment settings.",
       available: hasRouter,
-      nativeAudio: false
+      streaming: false
     },
     {
-      id: "gpt_audio_mini" as const,
-      label: "GPT Audio Mini",
-      model: process.env.OPENROUTER_GPT_AUDIO_MODEL || GPT_AUDIO_MODEL,
-      detail: "Native audio conversation through OpenRouter.",
+      id: "gemini_tts" as const,
+      label: "Gemini 3.1 Voice",
+      model: process.env.OPENROUTER_GEMINI_TTS_MODEL || GEMINI_TTS_MODEL,
+      detail: `Hands-free practice with a fixed ${process.env.OPENROUTER_GEMINI_TTS_VOICE?.trim() || "Aoede"} voice and streamed PCM playback.`,
       available: hasRouter,
-      nativeAudio: true
-    },
-    {
-      id: "gemini_live" as const,
-      label: "Gemini Live",
-      model: geminiModel || "Model ID required",
-      detail: geminiModel
-        ? "Native audio conversation through the configured OpenRouter model."
-        : "Enable by adding the exact OpenRouter Gemini Live model ID to Vercel.",
-      available: hasRouter && Boolean(geminiModel),
-      nativeAudio: true
+      streaming: true
     }
   ];
 }
@@ -65,9 +60,6 @@ export function getPracticeModelOptions() {
 export function assertPracticeModelAvailable(mode: PracticeMode) {
   const option = getPracticeModelOptions().find((item) => item.id === mode);
   if (!option?.available) {
-    if (mode === "gemini_live") {
-      throw new Error("Gemini Live needs an exact OPENROUTER_GEMINI_LIVE_MODEL value before it can be started.");
-    }
     throw new Error("Voice Practice is not configured on this deployment.");
   }
   return option;
@@ -118,24 +110,36 @@ export function buildScenarioSnapshot(context: PracticeContext, difficulty: Prac
   };
 }
 
-function buyerPrompt(context: PracticeContext, difficulty: PracticeDifficulty, history: PracticeMessage[]) {
-  const details = scenarioDetails(context);
+function listValue(value: unknown, fallback: string) {
+  if (Array.isArray(value)) return value.filter((item): item is string => typeof item === "string" && Boolean(item.trim())).join(", ") || fallback;
+  return stringValue(value, fallback);
+}
+
+function buyerPrompt(scenario: PracticeScenario, difficulty: PracticeDifficulty, history: PracticeMessage[]) {
+  const firstName = stringValue(scenario.prospect_name, "there");
+  const title = stringValue(scenario.simulated_role, "business leader");
+  const companyName = stringValue(scenario.company_name, "the company");
+  const segment = stringValue(scenario.segment, "enterprise buyer");
+  const products = listValue(scenario.recommended_products, "the Gnani platform");
+  const decisionCurrency = listValue(scenario.coach_focus, "business relevance");
+  const companyOverview = compact(scenario.company_overview, 700);
+  const accountBrief = compact(scenario.account_brief, 700);
   const transcript = history.slice(-10).map((message) => `${message.role === "user" ? "Sharath" : "Buyer"}: ${message.text}`).join("\n");
-  return `You are a simulated buyer for a private cold-call practice session. You are not the real ${details.firstName}; never claim to be them. You are a ${details.title} at ${details.companyName}.
+  return `You are a simulated buyer for a private cold-call practice session. You are not the real ${firstName}; never claim to be them. You are a ${title} at ${companyName}.
 
 Company context (use only when relevant; do not invent facts):
-${details.companyOverview || "No verified company research is available. Keep company-specific claims cautious."}
+${companyOverview || "No verified company research is available. Keep company-specific claims cautious."}
 
 Account context:
-${details.accountBrief || "No additional account brief is available."}
+${accountBrief || "No additional account brief is available."}
 
-The seller is practicing a Gnani.ai CCW follow-up. Their segment is ${details.script.label}. Their relevant Gnani products are ${details.script.products}. Their likely decision criteria are: ${details.script.decisionCurrency}
+The seller is practicing a Gnani.ai CCW follow-up. Their segment is ${segment}. Their relevant Gnani products are ${products}. Their likely decision criteria are: ${decisionCurrency}
 
 Your behavior: ${difficultyBrief(difficulty)}
 
 Rules:
 - Speak like a busy US enterprise buyer on a phone call, not a coach.
-- Stay within 8-34 words. One or two sentences only.
+- Stay within 6-26 words. One or two sentences only.
 - React to what the seller actually said. Do not volunteer a pitch for Gnani.
 - Do not invent company systems, budgets, projects, or event attendance.
 - You can use realistic objections: time, existing tools, unclear relevance, wrong owner, proof, security, or a narrower use case.
@@ -211,6 +215,10 @@ async function transcribeAudio(audioBase64: string, format: string) {
   return text;
 }
 
+export async function transcribePracticeAudio(audioBase64: string, mimeType: string) {
+  return transcribeAudio(audioBase64, audioFormatFromMime(mimeType));
+}
+
 async function synthesizeFish(text: string) {
   const voice = process.env.OPENROUTER_FISH_VOICE?.trim();
   const response = await fetch("https://openrouter.ai/api/v1/audio/speech", {
@@ -227,6 +235,33 @@ async function synthesizeFish(text: string) {
   const bytes = await response.arrayBuffer();
   if (!bytes.byteLength) throw new Error("Fish voice generation returned no audio.");
   return { audioBase64: Buffer.from(bytes).toString("base64"), audioMimeType: response.headers.get("content-type") || "audio/mpeg" };
+}
+
+export async function synthesizeGeminiPcm(text: string) {
+  const model = process.env.OPENROUTER_GEMINI_TTS_MODEL || GEMINI_TTS_MODEL;
+  const voice = process.env.OPENROUTER_GEMINI_TTS_VOICE?.trim() || "Aoede";
+  const response = await fetch("https://openrouter.ai/api/v1/audio/speech", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${getRouterKey()}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ model, input: text, voice, response_format: "pcm" })
+  });
+  if (!response.ok || !response.body) throw new Error(`Gemini voice generation failed (${response.status}).`);
+  return { stream: response.body, model, voice, sampleRate: 24_000 };
+}
+
+export async function preparePracticeTurn(input: {
+  difficulty: PracticeDifficulty;
+  scenario: PracticeScenario;
+  history: PracticeMessage[];
+  audioBase64: string;
+  mimeType: string;
+}) {
+  const userTranscript = await transcribeAudio(input.audioBase64, audioFormatFromMime(input.mimeType));
+  const history = [...input.history, { role: "user" as const, text: userTranscript }];
+  const buyer = await openRouterText(buyerPrompt(input.scenario, input.difficulty, history), 70);
+  const reply = buyer.text.replace(/^Buyer:\s*/i, "").replace(/\s+/g, " ").trim();
+  if (!reply) throw new Error("The simulated buyer returned no reply.");
+  return { userTranscript, reply, model: buyer.model };
 }
 
 function audioFormatFromMime(mimeType: string) {
@@ -273,7 +308,7 @@ async function nativeAudioReply(mode: "gpt_audio_mini" | "gemini_live", context:
       modalities: ["text", "audio"],
       audio: { voice, format: responseFormat },
       messages: [
-        { role: "system", content: buyerPrompt(context, difficulty, history) },
+        { role: "system", content: buyerPrompt(buildScenarioSnapshot(context, difficulty), difficulty, history) },
         {
           role: "user",
           content: [
@@ -334,13 +369,24 @@ export async function respondToPracticeTurn(input: {
   mimeType: string;
 }) {
   assertPracticeModelAvailable(input.mode);
+  const scenario = buildScenarioSnapshot(input.context, input.difficulty);
   if (input.mode === "fish") {
-    const userTranscript = await transcribeAudio(input.audioBase64, audioFormatFromMime(input.mimeType));
-    const history = [...input.history, { role: "user" as const, text: userTranscript }];
-    const buyer = await openRouterText(buyerPrompt(input.context, input.difficulty, history), 100);
-    const reply = buyer.text.replace(/^Buyer:\s*/i, "").replace(/\s+/g, " ").trim();
-    const audio = await synthesizeFish(reply);
-    return { userTranscript, reply, audioBase64: audio.audioBase64, audioMimeType: audio.audioMimeType, model: `${buyer.model} + ${process.env.OPENROUTER_FISH_TTS_MODEL || FISH_TTS_MODEL}` };
+    const prepared = await preparePracticeTurn({ ...input, scenario });
+    const audio = await synthesizeFish(prepared.reply);
+    return { userTranscript: prepared.userTranscript, reply: prepared.reply, audioBase64: audio.audioBase64, audioMimeType: audio.audioMimeType, model: `${prepared.model} + ${process.env.OPENROUTER_FISH_TTS_MODEL || FISH_TTS_MODEL}` };
+  }
+
+  if (input.mode === "gemini_tts") {
+    const prepared = await preparePracticeTurn({ ...input, scenario });
+    const speech = await synthesizeGeminiPcm(prepared.reply);
+    const chunks: Buffer[] = [];
+    const reader = speech.stream.getReader();
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (value?.byteLength) chunks.push(Buffer.from(value));
+    }
+    return { userTranscript: prepared.userTranscript, reply: prepared.reply, audioBase64: pcm16ToWavBase64(Buffer.concat(chunks).toString("base64"), speech.sampleRate), audioMimeType: "audio/wav", model: `${prepared.model} + ${speech.model}` };
   }
 
   const [userTranscript, nativeReply] = await Promise.all([
