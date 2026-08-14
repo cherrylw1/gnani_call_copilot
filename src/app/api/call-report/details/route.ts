@@ -4,7 +4,7 @@ import { loadCallReportSource, parseReportFilters } from "@/lib/call-report-sour
 
 export const dynamic = "force-dynamic";
 
-const scopes = new Set<CallDetailScope>(["all", "answered", "prospect", "status", "outcome", "campaign", "persona", "industry", "account", "outbound", "touchpoint", "day"]);
+const scopes = new Set<CallDetailScope>(["all", "answered", "prospect", "status", "outcome", "campaign", "persona", "industry", "account", "outbound", "touchpoint", "duration", "day"]);
 
 export async function GET(request: Request) {
   try {

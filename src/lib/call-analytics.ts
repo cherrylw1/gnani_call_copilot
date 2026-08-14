@@ -256,7 +256,7 @@ export function buildCallReport(allRows: CallLogRow[], filters: ReportFilters, m
 
 export type CallReport = ReturnType<typeof buildCallReport>;
 
-export type CallDetailScope = "all" | "answered" | "prospect" | "status" | "outcome" | "campaign" | "persona" | "industry" | "account" | "outbound" | "touchpoint" | "day";
+export type CallDetailScope = "all" | "answered" | "prospect" | "status" | "outcome" | "campaign" | "persona" | "industry" | "account" | "outbound" | "touchpoint" | "duration" | "day";
 
 function inTouchpointBucket(count: number, bucket: string) {
   if (bucket === "1 touch") return count === 1;
@@ -288,6 +288,7 @@ export function buildCallDetails(
     const counts = groupCount(baseRows, (row) => row.prospect_email);
     rows = rows.filter((row) => inTouchpointBucket(counts.get(row.prospect_email) ?? 0, value));
   }
+  if (options.scope === "duration") rows = rows.filter((row) => row.call_status === "Answered" && (row.duration_seconds ?? 0) >= Number(value || 0));
   const search = normalize(options.search).toLowerCase();
   if (search) rows = rows.filter((row) => [row.prospect_name, row.prospect_email, row.job_title, row.account_name, row.industry, row.call_notes, row.outcome, row.call_status].some((field) => normalize(field).toLowerCase().includes(search)));
   rows = [...rows].sort((a, b) => b.completed_at.localeCompare(a.completed_at));

@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { Area, CartesianGrid, ComposedChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Activity, ArrowUpRight, Building2, CalendarDays, CheckCircle2, ChevronRight, Expand, Filter, PhoneCall, Printer, RefreshCw, Search, Target, Users, X } from "lucide-react";
+import { Activity, ArrowUpRight, Building2, CalendarDays, CheckCircle2, ChevronRight, Expand, Filter, MessageSquareText, PhoneCall, Printer, RefreshCw, Search, Target, Users, X } from "lucide-react";
 import type { CallReport, ReportFilters } from "@/lib/call-analytics";
 import { CallDetailDrawer, type Drilldown } from "@/components/call-report/call-detail-drawer";
 
@@ -111,7 +112,7 @@ export function CallReportDashboard() {
     <div className="pointer-events-none absolute inset-x-0 -top-7 -z-10 h-72 bg-[radial-gradient(circle_at_12%_0%,rgba(52,211,153,.09),transparent_42%),radial-gradient(circle_at_88%_10%,rgba(59,130,246,.06),transparent_36%)]" />
     <header className="flex flex-col gap-5 py-2 lg:flex-row lg:items-end lg:justify-between">
       <div className="max-w-3xl"><div className="mb-3 text-[11px] font-medium uppercase tracking-[0.16em] text-emerald-300/80">Call activity report</div><h1 className="text-3xl font-semibold tracking-[-0.05em] text-white md:text-4xl">Every attempt, connect, and outcome.</h1><p className="mt-3 max-w-2xl text-sm leading-6 text-zinc-400">Review outreach volume, account coverage, prospect touchpoints, connected-call notes, and the segments producing the strongest signal.</p></div>
-      <div className="call-report-actions flex flex-wrap items-center gap-2"><button onClick={() => window.print()} className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.035] px-3 text-xs text-zinc-300 transition hover:bg-white/[0.07]"><Printer className="size-3.5"/>Print report</button>{presentation ? <button onClick={exitPresentation} className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg bg-zinc-100 px-3 text-xs font-medium text-zinc-950"><X className="size-3.5"/>Exit presentation</button> : <button onClick={enterPresentation} className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg bg-zinc-100 px-3 text-xs font-medium text-zinc-950 transition hover:bg-white"><Expand className="size-3.5"/>Present</button>}</div>
+      <div className="call-report-actions flex flex-wrap items-center gap-2"><Link href="/conversation-insights" className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg border border-emerald-400/20 bg-emerald-400/[0.06] px-3 text-xs text-emerald-300 transition hover:bg-emerald-400/[0.1]"><MessageSquareText className="size-3.5"/>Conversation insights</Link><button onClick={() => window.print()} className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.035] px-3 text-xs text-zinc-300 transition hover:bg-white/[0.07]"><Printer className="size-3.5"/>Print report</button>{presentation ? <button onClick={exitPresentation} className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg bg-zinc-100 px-3 text-xs font-medium text-zinc-950"><X className="size-3.5"/>Exit presentation</button> : <button onClick={enterPresentation} className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg bg-zinc-100 px-3 text-xs font-medium text-zinc-950 transition hover:bg-white"><Expand className="size-3.5"/>Present</button>}</div>
     </header>
 
     <div className="call-report-filter-bar z-20 rounded-2xl border border-white/10 bg-[#0a0d11]/95 p-3 shadow-[0_18px_50px_rgba(0,0,0,.3)] backdrop-blur-xl lg:sticky lg:top-0">
