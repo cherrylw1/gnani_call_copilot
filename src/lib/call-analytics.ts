@@ -74,13 +74,23 @@ function buildBreakdown(rows: CallLogRow[], key: (row: CallLogRow) => string) {
     const subset = rows.filter((row) => (key(row) || "Unknown") === name);
     const answered = subset.filter((row) => row.call_status === "Answered").length;
     const definitive = subset.filter((row) => definitiveStatus(row.call_status)).length;
+    const connectRate = percentage(answered, definitive);
+    const shareOfCalls = percentage(calls, rows.length);
+    const z = 1.96;
+    const denominator = 1 + (z * z) / Math.max(definitive, 1);
+    const centre = connectRate + (z * z) / (2 * Math.max(definitive, 1));
+    const margin = z * Math.sqrt((connectRate * (1 - connectRate) + (z * z) / (4 * Math.max(definitive, 1))) / Math.max(definitive, 1));
     return {
       name,
       calls,
       prospects: unique(subset.map((row) => row.prospect_email)),
       accounts: unique(subset.map((row) => row.account_name.toLowerCase())),
       answered,
-      connectRate: percentage(answered, definitive),
+      definitive,
+      connectRate,
+      shareOfCalls,
+      callsPerConnect: answered ? calls / answered : null,
+      confidenceFloor: definitive ? Math.max(0, (centre - margin) / denominator) : 0,
       voicemailRate: percentage(subset.filter((row) => row.call_status === "Voice Mail").length, subset.length),
       errorRate: percentage(subset.filter((row) => row.call_status === "Errored").length, subset.length)
     };
@@ -121,9 +131,9 @@ function prospectRows(periodRows: CallLogRow[], lifetimeRows: CallLogRow[]) {
 function touchpointDistribution(prospects: ReturnType<typeof prospectRows>) {
   const buckets = [
     { name: "1 touch", min: 1, max: 1 },
-    { name: "2–3 touches", min: 2, max: 3 },
-    { name: "4–6 touches", min: 4, max: 6 },
-    { name: "7–9 touches", min: 7, max: 9 },
+    { name: "2-3 touches", min: 2, max: 3 },
+    { name: "4-6 touches", min: 4, max: 6 },
+    { name: "7-9 touches", min: 7, max: 9 },
     { name: "10+ touches", min: 10, max: Number.POSITIVE_INFINITY }
   ];
   return buckets.map((bucket) => ({
@@ -132,7 +142,7 @@ function touchpointDistribution(prospects: ReturnType<typeof prospectRows>) {
   }));
 }
 
-export function buildManagementReport(allRows: CallLogRow[], filters: ReportFilters, masterContactCount: number, latestImport: { created_at?: string; file_name?: string } | null) {
+export function buildCallReport(allRows: CallLogRow[], filters: ReportFilters, masterContactCount: number, latestImport: { created_at?: string; file_name?: string } | null) {
   const periodRows = applyReportFilters(allRows, filters, true);
   const lifetimeRows = applyReportFilters(allRows, filters, false);
   const prospects = prospectRows(periodRows, lifetimeRows);
@@ -195,6 +205,17 @@ export function buildManagementReport(allRows: CallLogRow[], filters: ReportFilt
     listCoverage: percentage(uniqueProspects, masterContactCount)
   };
 
+  const addSignals = (items: ReturnType<typeof buildBreakdown>) => items.map((item) => {
+    const enoughSignal = item.definitive >= 40 && item.answered >= 2;
+    const lowVolume = item.calls < Math.max(30, periodRows.length * 0.035);
+    let signal: "Prioritize" | "Keep testing" | "Rework" | "No signal" = "No signal";
+    if (enoughSignal && item.connectRate >= summary.connectRate * 1.15) signal = "Prioritize";
+    else if (lowVolume || item.answered < 2) signal = "Keep testing";
+    else if (item.connectRate < summary.connectRate * 0.7) signal = "Rework";
+    else signal = "Keep testing";
+    return { ...item, signal };
+  }).sort((a, b) => b.confidenceFloor - a.confidenceFloor || b.calls - a.calls);
+
   const insights = [
     `${uniqueProspects.toLocaleString()} prospects across ${uniqueAccounts.toLocaleString()} accounts received at least one call in this period.`,
     `The team completed ${periodRows.length.toLocaleString()} call touchpoints, averaging ${summary.averageTouches.toFixed(1)} per attempted prospect.`,
@@ -220,16 +241,67 @@ export function buildManagementReport(allRows: CallLogRow[], filters: ReportFilt
     daily,
     statuses,
     outcomes,
-    campaigns,
-    personas,
+    campaigns: addSignals(campaigns),
+    personas: addSignals(personas),
     industries,
     outboundNumbers,
     touchpointDistribution: touchpointDistribution(prospects),
     prospects,
     accounts,
     insights,
+    connectedCalls: [...answeredRows].sort((a, b) => b.completed_at.localeCompare(a.completed_at)).slice(0, 12),
     recentCalls: [...periodRows].sort((a, b) => b.completed_at.localeCompare(a.completed_at)).slice(0, 150)
   };
 }
 
-export type ManagementReport = ReturnType<typeof buildManagementReport>;
+export type CallReport = ReturnType<typeof buildCallReport>;
+
+export type CallDetailScope = "all" | "answered" | "prospect" | "status" | "outcome" | "campaign" | "persona" | "industry" | "account" | "outbound" | "touchpoint" | "day";
+
+function inTouchpointBucket(count: number, bucket: string) {
+  if (bucket === "1 touch") return count === 1;
+  if (bucket === "2-3 touches") return count >= 2 && count <= 3;
+  if (bucket === "4-6 touches") return count >= 4 && count <= 6;
+  if (bucket === "7-9 touches") return count >= 7 && count <= 9;
+  return bucket === "10+ touches" ? count >= 10 : true;
+}
+
+export function buildCallDetails(
+  allRows: CallLogRow[],
+  filters: ReportFilters,
+  options: { scope: CallDetailScope; value?: string; search?: string; page?: number; pageSize?: number }
+) {
+  const baseRows = applyReportFilters(allRows, filters, true);
+  const value = normalize(options.value);
+  let rows = baseRows;
+  if (options.scope === "answered") rows = rows.filter((row) => row.call_status === "Answered");
+  if (options.scope === "prospect") rows = rows.filter((row) => row.prospect_email === value);
+  if (options.scope === "status") rows = rows.filter((row) => row.call_status === value);
+  if (options.scope === "outcome") rows = rows.filter((row) => value === "Missing" ? !normalize(row.outcome) : row.outcome === value);
+  if (options.scope === "campaign") rows = rows.filter((row) => row.call_source === value);
+  if (options.scope === "persona") rows = rows.filter((row) => (row.persona_segment ?? "Other") === value);
+  if (options.scope === "industry") rows = rows.filter((row) => (row.industry ?? "Other / Unclassified") === value);
+  if (options.scope === "account") rows = rows.filter((row) => row.account_name === value);
+  if (options.scope === "outbound") rows = rows.filter((row) => (row.from_number ?? "Unknown") === value);
+  if (options.scope === "day") rows = rows.filter((row) => dayKey(row.completed_at) === value);
+  if (options.scope === "touchpoint") {
+    const counts = groupCount(baseRows, (row) => row.prospect_email);
+    rows = rows.filter((row) => inTouchpointBucket(counts.get(row.prospect_email) ?? 0, value));
+  }
+  const search = normalize(options.search).toLowerCase();
+  if (search) rows = rows.filter((row) => [row.prospect_name, row.prospect_email, row.job_title, row.account_name, row.industry, row.call_notes, row.outcome, row.call_status].some((field) => normalize(field).toLowerCase().includes(search)));
+  rows = [...rows].sort((a, b) => b.completed_at.localeCompare(a.completed_at));
+  const pageSize = Math.min(100, Math.max(10, options.pageSize ?? 30));
+  const pageCount = Math.max(1, Math.ceil(rows.length / pageSize));
+  const page = Math.min(pageCount, Math.max(1, options.page ?? 1));
+  return {
+    total: rows.length,
+    uniqueProspects: unique(rows.map((row) => row.prospect_email)),
+    uniqueAccounts: unique(rows.map((row) => row.account_name.toLowerCase())),
+    page,
+    pageCount,
+    rows: rows.slice((page - 1) * pageSize, page * pageSize)
+  };
+}
+
+export type CallDetails = ReturnType<typeof buildCallDetails>;

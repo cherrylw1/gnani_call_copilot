@@ -29,22 +29,25 @@ button, input, select, textarea { font: inherit; }
 
 .focus-ring:focus-visible { outline: 2px solid #f4f4f5; outline-offset: 2px; }
 
-html.management-presentation .app-sidebar,
-html.management-presentation .app-topbar { display: none !important; }
+html.call-report-presentation .app-sidebar,
+html.call-report-presentation .app-topbar { display: none !important; }
 
-html.management-presentation .app-main {
+html.call-report-presentation .app-main {
   max-width: 1920px;
   padding: 28px 36px;
 }
 
-html.management-presentation .management-filter-bar { position: relative; top: auto; }
+html.call-report-presentation .call-report-filter-bar { position: relative; top: auto; }
+
+.call-report-date { color-scheme: light; }
+.call-report-date::-webkit-calendar-picker-indicator { cursor: pointer; opacity: .9; }
 
 @media print {
   @page { size: landscape; margin: 10mm; }
   html, body { background: #09090b !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .app-sidebar, .app-topbar, .management-actions, .management-filter-bar { display: none !important; }
+  .app-sidebar, .app-topbar, .call-report-actions, .call-report-filter-bar, .call-detail-layer { display: none !important; }
   .app-main { max-width: none !important; padding: 0 !important; }
-  .management-report { padding-bottom: 0 !important; }
-  .management-report section { break-inside: avoid; box-shadow: none !important; }
-  .management-report table { font-size: 9px; }
+  .call-report { padding-bottom: 0 !important; }
+  .call-report section { break-inside: avoid; box-shadow: none !important; }
+  .call-report table { font-size: 9px; }
 }

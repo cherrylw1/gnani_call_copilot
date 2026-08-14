@@ -35,7 +35,7 @@ export const salesReference = {
   competitors: [
     {
       name: "PolyAI",
-      publicPositioning: "Enterprise voice AI agents for customer-service conversations, with industry use cases such as authentication, routing, payments, bookings, and account management.",
+      publicPositioning: "Enterprise voice AI agents for customer-service conversations, with industry use cases such as authentication, routing, payments, bookings, and account servicing.",
       gnaniAngle: "Do not make it a realism contest. Position Gnani where the buyer needs a voice-first platform plus live agent guidance, conversation analytics, workflow automation, and biometrics across the wider operation.",
       fieldMove: "Ask which journeys need a fully automated voice agent and which still need human agents with context and operational visibility.",
       sourceUrl: "https://poly.ai/"
@@ -56,21 +56,21 @@ export const salesReference = {
     },
     {
       name: "Cresta",
-      publicPositioning: "Customer-experience AI covering AI agents, real-time Agent Assist, knowledge, summaries, behavioral guidance, conversation intelligence, coaching, quality management, and training.",
+      publicPositioning: "Customer-experience AI covering AI agents, real-time Agent Assist, knowledge, summaries, behavioral guidance, conversation intelligence, coaching, quality assurance, and training.",
       gnaniAngle: "This is often an Agent Assist and conversation-intelligence comparison. Frame Gnani around real-time voice workflows, enterprise integration, and the ability to pair Assist and Analytics with automation and biometrics where the account needs it.",
       fieldMove: "Anchor the conversation in a live-call workflow, not a generic AI roadmap; ask what agents need in the moment and what leaders cannot see today.",
       sourceUrl: "https://cresta.com/"
     },
     {
       name: "Observe.AI",
-      publicPositioning: "A CX AI platform offering customer-support agents, frontline assistance, interaction intelligence, workflow integrations, governance, testing, and release management.",
+      publicPositioning: "A CX AI platform offering customer-support agents, frontline assistance, interaction intelligence, workflow integrations, governance, testing, and release controls.",
       gnaniAngle: "Treat this as an interaction-intelligence and frontline-operations comparison. Position Gnani where voice automation, Assist, Analytics, and enterprise customer workflows need to be considered as one operating layer.",
       fieldMove: "Separate the need for after-call intelligence from the need to automate or assist the conversation itself; the answer may require more than analytics alone.",
       sourceUrl: "https://www.observe.ai/"
     },
     {
       name: "CallMiner",
-      publicPositioning: "Conversation intelligence and automation software focused on contact-center experience, quality management, frontline performance, compliance, fraud detection, sales effectiveness, and customer-experience analytics.",
+      publicPositioning: "Conversation intelligence and automation software focused on contact-center experience, quality assurance, frontline performance, compliance, fraud detection, sales effectiveness, and customer-experience analytics.",
       gnaniAngle: "CallMiner is most relevant when the account starts with analytics, QA, or compliance. Position Gnani as a path from insight to action: analyze the interaction, guide the agent, and automate bounded voice workflows where appropriate.",
       fieldMove: "Ask whether the buyer only needs to understand calls better or also needs to change what happens during and after the call.",
       sourceUrl: "https://callminer.com/"
