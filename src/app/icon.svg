@@ -1,23 +1,16 @@
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gnani-mark" x1="12" y1="10" x2="52" y2="54" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#A7F3D0"/>
-      <stop offset="0.48" stop-color="#67E8F9"/>
-      <stop offset="1" stop-color="#A78BFA"/>
+    <linearGradient id="pastel-mark" x1="13" y1="15" x2="49" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BFE8D4"/>
+      <stop offset="0.52" stop-color="#C7D7F5"/>
+      <stop offset="1" stop-color="#E9C9DC"/>
     </linearGradient>
-    <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
-      <feGaussianBlur stdDeviation="1.8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
 
   <rect width="64" height="64" rx="16" fill="#080B10"/>
   <rect x="1" y="1" width="62" height="62" rx="15" stroke="#202A35" stroke-width="2"/>
 
-  <path d="M47.5 21.5C43.8 16.9 38.1 14 31.7 14C20.7 14 12 22.2 12 32.2C12 42.2 20.7 50.4 31.7 50.4C38.7 50.4 44.8 47 48.2 41.7" stroke="url(#gnani-mark)" stroke-width="6" stroke-linecap="round" filter="url(#soft-glow)"/>
-  <path d="M31 32.2H48.5V45.8" stroke="url(#gnani-mark)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft-glow)"/>
-  <circle cx="31.5" cy="32" r="3.1" fill="#E6FFFB"/>
+  <path d="M47 22.5C43.5 17.6 37.9 14.8 31.5 14.8C21.1 14.8 13 22.3 13 32C13 41.7 21.1 49.2 31.5 49.2C38.4 49.2 44.2 45.8 47.6 40.7" stroke="url(#pastel-mark)" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M31 32H47V45.5" stroke="url(#pastel-mark)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="31.5" cy="32" r="2.6" fill="#E8F2EC"/>
 </svg>
