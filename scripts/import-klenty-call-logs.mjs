@@ -79,10 +79,37 @@ const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true, transfo
 if (parsed.errors.length) throw new Error(`CSV parse failed: ${parsed.errors[0].message}`);
 
 const rows = parsed.data;
-const requiredHeaders = ["Call Id", "Prospect EmailId", "Completed Date", "Prospect", "Call Source", "Status", "Account", "To Number", "From Number", "Job Title", "Persona Segment", "Industry"];
 const headers = new Set(parsed.meta.fields ?? []);
+const cleanExport = headers.has("Call Date") && headers.has("Call Status") && headers.has("Email Address");
+const requiredHeaders = cleanExport
+  ? ["Call Date", "Call Time", "Prospect Name", "Job Title", "Company / Account", "Industry", "Persona Segment", "Phone Number", "Email Address", "Call Status", "Duration (Secs)", "Outcome Summary", "Call Notes", "Caller", "Recording / Shareable Link"]
+  : ["Call Id", "Prospect EmailId", "Completed Date", "Prospect", "Call Source", "Status", "Account", "To Number", "From Number", "Job Title", "Persona Segment", "Industry"];
 const missing = requiredHeaders.filter((header) => !headers.has(header));
 if (missing.length) throw new Error(`Missing required headers: ${missing.join(", ")}`);
+
+const sourceLabel = cleanExport ? basename(inputPath).replace(/\.csv$/i, "") : null;
+const canonicalRow = (row) => cleanExport ? {
+  "Call Id": "",
+  "Prospect EmailId": text(row["Email Address"]),
+  "Completed Date": `${text(row["Call Date"])}, ${text(row["Call Time"])}`,
+  Prospect: text(row["Prospect Name"]),
+  "Call Source": sourceLabel,
+  "Prospect Status": "",
+  "Call Type": "",
+  Purpose: "",
+  Status: text(row["Call Status"]),
+  "Call Notes": text(row["Call Notes"]),
+  Account: text(row["Company / Account"]),
+  "To Number": text(row["Phone Number"]),
+  "Call Placed By": text(row.Caller),
+  Outcome: text(row["Outcome Summary"]),
+  "Call Duration (in secs)": text(row["Duration (Secs)"]),
+  "Call shareable link": text(row["Recording / Shareable Link"]),
+  "From Number": "",
+  "Job Title": text(row["Job Title"]),
+  "Persona Segment": text(row["Persona Segment"]),
+  Industry: text(row.Industry)
+} : row;
 
 const [contacts, previousImport] = await Promise.all([
   fetchAll("contacts", "id,email,company_id"),
@@ -101,12 +128,13 @@ if (!importId) {
 }
 
 const prepared = rows.map((row) => {
-  const callId = text(row["Call Id"]);
-  const email = lower(row["Prospect EmailId"]);
+  const canonical = canonicalRow(row);
+  const callId = text(canonical["Call Id"]);
+  const email = lower(canonical["Prospect EmailId"]);
   const contact = contactByEmail.get(email);
-  const completedAt = parseIstTimestamp(row["Completed Date"]);
-  const fallbackIdentity = [email, completedAt, text(row["To Number"]), text(row["From Number"]), text(row.Status), text(row["Call Duration (in secs)"]), text(row["Call Source"])].join("|");
-  const duration = Number.parseInt(text(row["Call Duration (in secs)"]), 10);
+  const completedAt = parseIstTimestamp(canonical["Completed Date"]);
+  const fallbackIdentity = [email, completedAt, text(canonical["To Number"]), text(canonical["From Number"]), text(canonical.Status), text(canonical["Call Duration (in secs)"]), text(canonical["Call Source"])].join("|");
+  const duration = Number.parseInt(text(canonical["Call Duration (in secs)"]), 10);
   return {
     import_id: importId,
     call_id: callId || null,
@@ -114,28 +142,28 @@ const prepared = rows.map((row) => {
     contact_id: contact?.id ?? null,
     company_id: contact?.company_id ?? null,
     prospect_email: email,
-    prospect_name: text(row.Prospect),
-    account_name: text(row.Account),
+    prospect_name: text(canonical.Prospect),
+    account_name: text(canonical.Account),
     completed_at: completedAt,
-    completed_at_raw: text(row["Completed Date"]),
+    completed_at_raw: text(canonical["Completed Date"]),
     source_timezone: SOURCE_TIMEZONE,
-    call_source: text(row["Call Source"]),
-    prospect_status: text(row["Prospect Status"]),
-    call_type: text(row["Call Type"]) || null,
-    purpose: text(row.Purpose) || null,
-    call_status: text(row.Status),
-    call_notes: text(row["Call Notes"]) || null,
-    to_number: text(row["To Number"]) || null,
-    call_placed_by: text(row["Call Placed By"]) || null,
-    outcome: text(row.Outcome) || null,
+    call_source: text(canonical["Call Source"]),
+    prospect_status: text(canonical["Prospect Status"]),
+    call_type: text(canonical["Call Type"]) || null,
+    purpose: text(canonical.Purpose) || null,
+    call_status: text(canonical.Status),
+    call_notes: text(canonical["Call Notes"]) || null,
+    to_number: text(canonical["To Number"]) || null,
+    call_placed_by: text(canonical["Call Placed By"]) || null,
+    outcome: text(canonical.Outcome) || null,
     duration_seconds: Number.isFinite(duration) ? duration : null,
-    shareable_link: text(row["Call shareable link"]) || null,
-    from_number: text(row["From Number"]) || null,
-    job_title: text(row["Job Title"]) || null,
-    persona_segment_raw: text(row["Persona Segment"]) || null,
-    persona_segment: normalizePersona(row["Persona Segment"]),
-    industry_raw: text(row.Industry) || null,
-    industry: normalizeIndustry(row.Industry)
+    shareable_link: text(canonical["Call shareable link"]) || null,
+    from_number: text(canonical["From Number"]) || null,
+    job_title: text(canonical["Job Title"]) || null,
+    persona_segment_raw: text(canonical["Persona Segment"]) || null,
+    persona_segment: normalizePersona(canonical["Persona Segment"]),
+    industry_raw: text(canonical.Industry) || null,
+    industry: normalizeIndustry(canonical.Industry)
   };
 });
 
