@@ -127,7 +127,7 @@ if (!importId) {
   importId = data.id;
 }
 
-const prepared = rows.map((row) => {
+const preparedRows = rows.map((row) => {
   const canonical = canonicalRow(row);
   const callId = text(canonical["Call Id"]);
   const email = lower(canonical["Prospect EmailId"]);
@@ -166,6 +166,16 @@ const prepared = rows.map((row) => {
     industry: normalizeIndustry(canonical.Industry)
   };
 });
+
+// A clean export can contain the same call more than once (for example, a
+// repeated row with the same timestamp, phone, status, and duration). The
+// fallback identity intentionally maps those rows to one stable key. Remove
+// duplicates before batching so Postgres does not receive the same conflict
+// key twice in one upsert statement.
+const prepared = [...new Map(preparedRows.map((row) => [row.dedupe_key, row])).values()];
+if (prepared.length !== preparedRows.length) {
+  console.log(`Skipped ${preparedRows.length - prepared.length} duplicate row(s) within the source file.`);
+}
 
 let imported = 0;
 for (const batch of chunk(prepared)) {
