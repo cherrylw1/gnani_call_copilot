@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   Layers,
   Phone,
@@ -16,7 +16,12 @@ import {
   Sparkles,
   ShieldCheck,
   Zap,
-  Target
+  Target,
+  Search,
+  Users,
+  BarChart3,
+  ChevronDown,
+  ChevronUp
 } from "lucide-react";
 import { PageTitle } from "@/components/page-title";
 import { Card } from "@/components/ui/card";
@@ -25,11 +30,443 @@ import { StatusBadge } from "@/components/status-badge";
 type ActiveTab = "overview" | "ccw" | "outbound" | "displacement";
 type CcwTier = "tier1_2" | "tier3" | "tier4";
 
+export interface CcwIndustrySector {
+  id: string;
+  name: string;
+  category: "buyer" | "partner" | "other";
+  count: number;
+  pct: number;
+  companiesCount: number;
+  subIndustries: string[];
+  sampleCompanies: string[];
+  primaryPersonas: string;
+  voiceAiHook: string;
+  typicalPains: string;
+}
+
+export interface CcwPersona {
+  name: string;
+  count: number;
+  pct: number;
+  color: string;
+  desc: string;
+}
+
+const ccwPersonaData: CcwPersona[] = [
+  {
+    name: "Operations & Customer Support",
+    count: 685,
+    pct: 40.9,
+    color: "bg-blue-500",
+    desc: "Contact center directors, support VPs, call center managers, customer care leads"
+  },
+  {
+    name: "Executive Leadership & COOs",
+    count: 454,
+    pct: 27.1,
+    color: "bg-amber-500",
+    desc: "Chief Operating Officers, SVPs, CXOs, Managing Directors, General Managers"
+  },
+  {
+    name: "Product, IT & Telephony",
+    count: 169,
+    pct: 10.1,
+    color: "bg-indigo-500",
+    desc: "Telephony analysts, CCaaS engineers, IT directors, CIOs, network operations"
+  },
+  {
+    name: "Customer Experience (CX) & Success",
+    count: 137,
+    pct: 8.2,
+    color: "bg-emerald-500",
+    desc: "Chief Experience Officers, CX Directors, Client Success VPs, customer advocacy"
+  },
+  {
+    name: "Sales & Commercial Growth",
+    count: 134,
+    pct: 8.0,
+    color: "bg-violet-500",
+    desc: "Commercial leaders, sales directors, GTM executives, account executives"
+  },
+  {
+    name: "HR, Enablement & QA",
+    count: 48,
+    pct: 2.9,
+    color: "bg-zinc-500",
+    desc: "Quality assurance leads, workforce trainers, supervisors, customer service QA"
+  }
+];
+
+const ccwIndustryData: CcwIndustrySector[] = [
+  {
+    id: "support-intensive",
+    name: "Customer Support Intensive (Cross-Industry)",
+    category: "buyer",
+    count: 289,
+    pct: 17.3,
+    companiesCount: 141,
+    subIndustries: ["Customer Support Intensive (289)"],
+    sampleCompanies: ["Aflac", "ADT", "AAFES", "ADCS Clinics", "Accuserve Solutions", "1-800 Contacts"],
+    primaryPersonas: "Operations & Support (67%), Executive Leadership (20%)",
+    voiceAiHook:
+      "Autonomous tier-1 inbound call resolution, eliminating hold times and queue abandons during daily volume spikes.",
+    typicalPains:
+      "High cost-per-call ($6.50+), long queue wait times driving call abandons, and 35%+ agent annual turnover."
+  },
+  {
+    id: "cx-tech",
+    name: "CX Tech, AI & Contact Center Vendors",
+    category: "partner",
+    count: 238,
+    pct: 14.2,
+    companiesCount: 135,
+    subIndustries: [
+      "CX Technology/AI Vendor (95)",
+      "Contact Center / CCaaS (69)",
+      "CX Platforms (26)",
+      "Speech Analytics (11)"
+    ],
+    sampleCompanies: ["[24]7.ai", "8x8", "ASAPP", "Afiniti", "Agora", "Alvaria", "Amazon Connect", "Five9"],
+    primaryPersonas: "Sales & Revenue (31%), Executive Leadership (26%), Product/IT (17%)",
+    voiceAiHook:
+      "Partnering & telephony co-existence: sub-200ms sovereign voice engine API directly over SIP vs CCaaS replacement.",
+    typicalPains:
+      "Audio latency in multi-vendor rented stacks (1.5s - 2.5s lag) and high per-minute rented model costs."
+  },
+  {
+    id: "business-services",
+    name: "Business, Professional & Facilities Services",
+    category: "buyer",
+    count: 231,
+    pct: 13.8,
+    companiesCount: 151,
+    subIndustries: [
+      "Business Services (200)",
+      "Professional Services/Consulting (17)",
+      "Facilities & Property (6)",
+      "IT Consulting (3)"
+    ],
+    sampleCompanies: ["Airbnb", "Ainsworth Inc", "Accenture", "CBRE", "Allegis Group", "Akralos"],
+    primaryPersonas: "Operations & Customer Support (49%), Executive Leadership (25%)",
+    voiceAiHook:
+      "Multi-site workforce dispatch, facility maintenance intake, and resident self-touring access over the phone.",
+    typicalPains:
+      "Decentralized dispatch scheduling and after-hours call routing overload across distributed offices."
+  },
+  {
+    id: "bfsi",
+    name: "BFSI, Banking & FinTech",
+    category: "buyer",
+    count: 219,
+    pct: 13.1,
+    companiesCount: 151,
+    subIndustries: [
+      "Core BFSI (131)",
+      "FinTech / Payments (27)",
+      "Banking & Credit Unions (12)",
+      "Insurance & Collections (19)"
+    ],
+    sampleCompanies: [
+      "4Front Credit Union",
+      "AAA Auto Club Group",
+      "Ally Financial",
+      "Airwallex",
+      "Albert",
+      "Barclays",
+      "MIT FCU",
+      "UMB Bank"
+    ],
+    primaryPersonas: "Operations & Support (53%), Executive Leadership (15%), Product/IT (12%)",
+    voiceAiHook:
+      "Automated balance checks, debit card activation/locks, payoff inquiries, and PCI-compliant phone payments with voice biometrics.",
+    typicalPains:
+      "Strict PCI/GLBA compliance overhead, peak billing cycle queue spikes, and multi-quarter telephony backlog."
+  },
+  {
+    id: "healthcare",
+    name: "Healthcare, Hospital Systems & Life Sciences",
+    category: "buyer",
+    count: 123,
+    pct: 7.3,
+    companiesCount: 69,
+    subIndustries: [
+      "Healthcare Operations (44)",
+      "Healthcare & Life Sciences (29)",
+      "Medical & Devices (23)",
+      "Health Tech (9)"
+    ],
+    sampleCompanies: [
+      "24 Hour Home Care",
+      "AdventHealth",
+      "Aeroflow Health",
+      "Affordable Care",
+      "Allina Health",
+      "Signify Health",
+      "Kaiser Permanente"
+    ],
+    primaryPersonas: "Operations & Support (50%), Executive Leadership (12%), CX & Success (9%)",
+    voiceAiHook:
+      "HIPAA-compliant 24/7 patient intake, appointment scheduling, prescription refills, and doctor prior-authorization hold inquiries.",
+    typicalPains:
+      "High morning patient call spikes, complex EHR scheduling workflows, and licensed clinical staff bogged down in routine status checks."
+  },
+  {
+    id: "consumer-services",
+    name: "Consumer Operations & Enterprise Services",
+    category: "buyer",
+    count: 121,
+    pct: 7.2,
+    companiesCount: 100,
+    subIndustries: [
+      "Enterprise & Consumer Operations (81)",
+      "Consumer Services (39)",
+      "Consumer Products (1)"
+    ],
+    sampleCompanies: ["AT&T", "AmaWaterways Cruises", "ArenaCX", "Armstrong Collective", "Rent-A-Center"],
+    primaryPersonas: "Operations & Support (40%), Executive Leadership (39%), Commercial (13%)",
+    voiceAiHook:
+      "Subscription modifications, account verification, billing inquiry resolution, and omni-channel customer triage.",
+    typicalPains:
+      "High customer churn during billing disputes and slow agent onboarding cycles during promotions."
+  },
+  {
+    id: "bpo",
+    name: "BPO & Contact Center Outsourcing",
+    category: "buyer",
+    count: 102,
+    pct: 6.1,
+    companiesCount: 57,
+    subIndustries: [
+      "BPO / Outsourcing (84)",
+      "Contact Center BPO (11)",
+      "Collections & Staffing BPO (4)"
+    ],
+    sampleCompanies: [
+      "Aureon Contact Center Solutions",
+      "AZPIRED",
+      "CCI Global",
+      "EBG Solutions",
+      "Sutherland",
+      "TTEC",
+      "Teleperformance"
+    ],
+    primaryPersonas: "Operations & Customer Support (58%), Executive Leadership (22%), Sales (11%)",
+    voiceAiHook:
+      "Deflecting tier-1 voice queues (reducing cost-per-call from $6.50 to $0.80) and empowering live reps with Real-Time Agent Co-Pilot.",
+    typicalPains:
+      "Contract margin compression, high agent attrition (40%+), and meeting strict client SLA penalty thresholds."
+  },
+  {
+    id: "telecom-media",
+    name: "Telecom, Media & Entertainment",
+    category: "buyer",
+    count: 70,
+    pct: 4.2,
+    companiesCount: 42,
+    subIndustries: [
+      "Media & Entertainment (20)",
+      "Telecom Providers (18)",
+      "Tech & Telecom (12)",
+      "Publishing & Events (6)"
+    ],
+    sampleCompanies: ["Altice", "Brightspeed", "Caesars Entertainment", "Charter Spectrum", "Customer Experience Dive"],
+    primaryPersonas: "Operations & Support (46%), Executive Leadership (21%), Product/IT (14%)",
+    voiceAiHook:
+      "Automated billing inquiries, service package upgrades, technician dispatch updates, and churn prevention.",
+    typicalPains:
+      "Repeated bill shock calls after promotional expiration and technical dispatch scheduling."
+  },
+  {
+    id: "tech-saas",
+    name: "Enterprise Technology & SaaS",
+    category: "buyer",
+    count: 69,
+    pct: 4.1,
+    companiesCount: 52,
+    subIndustries: [
+      "Tech & Software (14)",
+      "IT Services (10)",
+      "Cloud Infrastructure (6)",
+      "Networking (5)"
+    ],
+    sampleCompanies: ["AgroRaptor", "Amazon Connect", "Atain", "Datadog", "Cisco", "Microsoft"],
+    primaryPersonas: "Product & IT (32%), Operations & Support (26%), Executive Leadership (23%)",
+    voiceAiHook:
+      "Sub-200ms sovereign voice engine API, direct SIP trunking, and native multi-language voice-to-voice agents.",
+    typicalPains:
+      "Custom speech-to-text pipeline latency and expensive GPU runtime charges from rented 3rd-party models."
+  },
+  {
+    id: "retail",
+    name: "Retail, E-Commerce & Consumer Brands",
+    category: "buyer",
+    count: 46,
+    pct: 2.7,
+    companiesCount: 31,
+    subIndustries: [
+      "Retail / E-Commerce (12)",
+      "Consumer Products (12)",
+      "Brands (6)",
+      "Food Delivery (6)"
+    ],
+    sampleCompanies: ["Amazon", "Avocado Green Brands", "Casey's", "City Furniture", "Kohl's", "Grubhub", "Chewy"],
+    primaryPersonas: "Operations & Customer Support (54%), Executive Leadership (20%), Product/IT (13%)",
+    voiceAiHook:
+      "Where-is-my-order (WISMO) lookups, return & exchange handling, order modification, and peak holiday volume absorption.",
+    typicalPains:
+      "Acute 4x volume spikes during peak Q4 sales and seasonal temp agent training costs."
+  },
+  {
+    id: "public-sector",
+    name: "Public Sector, Higher Ed & Non-Profit",
+    category: "buyer",
+    count: 45,
+    pct: 2.7,
+    companiesCount: 32,
+    subIndustries: [
+      "Higher Education (19)",
+      "Government / Public Sector (9)",
+      "Associations & Non-Profits (13)"
+    ],
+    sampleCompanies: [
+      "American Cancer Society",
+      "Ascend Learning",
+      "ASWB",
+      "BYU-Idaho",
+      "Choctaw Nation",
+      "Sacramento County"
+    ],
+    primaryPersonas: "Operations & Support (40%), Executive Leadership (18%), Product/IT (12%)",
+    voiceAiHook:
+      "Citizen inquiries, student enrollment/financial aid FAQs, examination registration, and license renewals.",
+    typicalPains:
+      "Fixed government headcount budgets and strict public compliance standards."
+  },
+  {
+    id: "utilities",
+    name: "Utilities, Energy & Environmental Services",
+    category: "buyer",
+    count: 31,
+    pct: 1.9,
+    companiesCount: 17,
+    subIndustries: [
+      "Utilities & Energy (25)",
+      "Waste Management & Environmental (3)",
+      "Public Safety (2)"
+    ],
+    sampleCompanies: [
+      "1074 Recology HQ",
+      "AEP (American Electric Power)",
+      "Central Arkansas Water",
+      "Dominion Energy",
+      "SMUD",
+      "Las Vegas Valley Water"
+    ],
+    primaryPersonas: "Operations & Support (48%), Product & IT (23%), Executive Leadership (10%)",
+    voiceAiHook:
+      "Storm outage emergency call spikes, automated telephone bill payments, and meter read lookups with zero queue hold.",
+    typicalPains:
+      "Massive 10x call volume spikes during severe weather events overwhelming municipal contact centers."
+  },
+  {
+    id: "travel",
+    name: "Travel, Hospitality & Transportation",
+    category: "buyer",
+    count: 31,
+    pct: 1.9,
+    companiesCount: 15,
+    subIndustries: [
+      "Travel & Hospitality (22)",
+      "Logistics & Passenger Transport (3)",
+      "Airlines (3)"
+    ],
+    sampleCompanies: [
+      "Agility Holdings Group",
+      "AmaWaterways Cruises",
+      "American Airlines",
+      "Expedia Group",
+      "Hilton Grand Vacations",
+      "Wynn Resorts"
+    ],
+    primaryPersonas: "Operations & Support (55%), Executive Leadership (26%)",
+    voiceAiHook:
+      "Flight status inquiries, booking re-confirmations, zero-wait guest concierge calls, and luggage tracking.",
+    typicalPains:
+      "Weather delays causing severe queue backups and angry passengers waiting 60+ minutes."
+  },
+  {
+    id: "manufacturing",
+    name: "Manufacturing & Industrial",
+    category: "buyer",
+    count: 14,
+    pct: 0.8,
+    companiesCount: 12,
+    subIndustries: ["Manufacturing & Equipment (10)", "Consumer Goods (4)"],
+    sampleCompanies: ["A. O. Smith", "Ace Industrial Supply", "Bob Barker Company", "Cambro", "Electroline Inc."],
+    primaryPersonas: "Executive Leadership (36%), Product & IT (29%), Operations (14%)",
+    voiceAiHook:
+      "B2B parts inventory status, order fulfillment updates, warranty support intake.",
+    typicalPains:
+      "Distributor order status delays and technical parts catalog navigation."
+  },
+  {
+    id: "automotive",
+    name: "Automotive & Auto Services",
+    category: "buyer",
+    count: 7,
+    pct: 0.4,
+    companiesCount: 6,
+    subIndustries: ["Automotive Dealerships & Networks (6)", "Auto Repair Services (1)"],
+    sampleCompanies: ["Caliber Collision", "JM Family Enterprises", "Mercedes-Benz USA", "OPENLANE"],
+    primaryPersonas: "CX & Success (29%), Operations & Support (29%), Product/IT (14%)",
+    voiceAiHook:
+      "Service appointment booking, repair status notifications, vehicle delivery scheduling.",
+    typicalPains:
+      "High missed call rates at service bays leading to lost maintenance revenue."
+  },
+  {
+    id: "other",
+    name: "Other / Diversified Operations",
+    category: "other",
+    count: 32,
+    pct: 1.9,
+    companiesCount: 26,
+    subIndustries: ["Unclassified Operations (20)", "Logistics & Storage (5)", "Home Services & Food (7)"],
+    sampleCompanies: ["ARG", "Atman", "BizApp", "College Hunks Hauling Junk", "Trojan Storage"],
+    primaryPersonas: "Executive Leadership (34%), Operations & Support (22%), CX (16%)",
+    voiceAiHook:
+      "General intake and routing triage for diverse enterprise operations.",
+    typicalPains:
+      "Repetitive front-desk intake and routing across disparate business lines."
+  }
+];
+
 export function BreakdownWorkspace() {
   const [activeTab, setActiveTab] = useState<ActiveTab>("ccw");
   const [selectedCcwTier, setSelectedCcwTier] = useState<CcwTier>("tier1_2");
   const [selectedCcwIndustry, setSelectedCcwIndustry] = useState<string>("general");
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  // CCW Industry Breakdown Filters
+  const [ccwIndustrySearch, setCcwIndustrySearch] = useState("");
+  const [ccwCategoryFilter, setCcwCategoryFilter] = useState<"all" | "buyer" | "partner">("all");
+  const [expandedSectorId, setExpandedSectorId] = useState<string | null>(null);
+
+  const filteredCcwIndustries = useMemo(() => {
+    return ccwIndustryData.filter((sector) => {
+      if (ccwCategoryFilter !== "all" && sector.category !== ccwCategoryFilter) {
+        return false;
+      }
+      if (!ccwIndustrySearch.trim()) return true;
+      const query = ccwIndustrySearch.toLowerCase();
+      return (
+        sector.name.toLowerCase().includes(query) ||
+        sector.voiceAiHook.toLowerCase().includes(query) ||
+        sector.sampleCompanies.some((c) => c.toLowerCase().includes(query)) ||
+        sector.subIndustries.some((sub) => sub.toLowerCase().includes(query))
+      );
+    });
+  }, [ccwIndustrySearch, ccwCategoryFilter]);
 
   const copyToClipboard = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
@@ -503,6 +940,308 @@ Would a 1-page architecture teardown be helpful for your customer operations tea
               </div>
             </Card>
           </div>
+
+          {/* =========================================================================
+              CCW INDUSTRY & PERSONA INTELLIGENCE BREAKDOWN (1,674 LEADS)
+              ========================================================================= */}
+          <Card className="p-6 space-y-6 border-zinc-800 bg-zinc-950/80">
+            {/* Header */}
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between border-b border-zinc-800 pb-4">
+              <div>
+                <span className="text-[11px] font-medium uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                  <BarChart3 className="size-3" /> Account & Vertical Intelligence
+                </span>
+                <h3 className="text-base font-semibold text-zinc-100 mt-1">
+                  CCW Leads Mapped by Industry & Persona (1,674 Leads)
+                </h3>
+                <p className="text-xs text-zinc-400">
+                  Granular distribution across 16 vertical sectors, 870+ unique enterprises, and 6 core buyer personas.
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <StatusBadge tone="good">80% Enterprise Buyers</StatusBadge>
+                <StatusBadge tone="neutral">14% Tech Ecosystem</StatusBadge>
+              </div>
+            </div>
+
+            {/* Quick Metrics Cards */}
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="rounded border border-zinc-800 bg-zinc-900/50 p-3.5 space-y-1">
+                <div className="flex items-center justify-between text-xs text-zinc-400 font-medium">
+                  <span>Total Master Leads</span>
+                  <Users className="size-3.5 text-zinc-500" />
+                </div>
+                <p className="mono text-2xl font-bold text-zinc-100">1,674</p>
+                <p className="text-[11px] text-zinc-500">1,633 clean callable after purge</p>
+              </div>
+
+              <div className="rounded border border-zinc-800 bg-zinc-900/50 p-3.5 space-y-1">
+                <div className="flex items-center justify-between text-xs text-zinc-400 font-medium">
+                  <span>Direct Buyer Targets</span>
+                  <Target className="size-3.5 text-emerald-400" />
+                </div>
+                <p className="mono text-2xl font-bold text-emerald-400">1,336</p>
+                <p className="text-[11px] text-zinc-500">79.8% across Tiers 1-4</p>
+              </div>
+
+              <div className="rounded border border-zinc-800 bg-zinc-900/50 p-3.5 space-y-1">
+                <div className="flex items-center justify-between text-xs text-zinc-400 font-medium">
+                  <span>Unique Enterprises</span>
+                  <Building2 className="size-3.5 text-blue-400" />
+                </div>
+                <p className="mono text-2xl font-bold text-blue-400">870+</p>
+                <p className="text-[11px] text-zinc-500">From Fortune 500 to Mid-Market</p>
+              </div>
+
+              <div className="rounded border border-zinc-800 bg-zinc-900/50 p-3.5 space-y-1">
+                <div className="flex items-center justify-between text-xs text-zinc-400 font-medium">
+                  <span>CX & AI Tech Vendors</span>
+                  <Layers className="size-3.5 text-violet-400" />
+                </div>
+                <p className="mono text-2xl font-bold text-violet-400">238</p>
+                <p className="text-[11px] text-zinc-500">14.2% partners & adjacent vendors</p>
+              </div>
+            </div>
+
+            {/* Persona Seniority Distribution Widget */}
+            <div className="rounded border border-zinc-800/80 bg-zinc-900/30 p-4 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
+                  <Users className="size-3.5 text-amber-400" /> Persona & Seniority Distribution
+                </span>
+                <span className="text-[11px] text-zinc-500">100% of callable contacts classified</span>
+              </div>
+
+              {/* Progress Bar Stack */}
+              <div className="flex h-2.5 w-full overflow-hidden rounded-full bg-zinc-800">
+                {ccwPersonaData.map((p) => (
+                  <div
+                    key={p.name}
+                    className={`${p.color} h-full transition-all`}
+                    style={{ width: `${p.pct}%` }}
+                    title={`${p.name}: ${p.count} leads (${p.pct}%)`}
+                  />
+                ))}
+              </div>
+
+              {/* Persona Pills Grid */}
+              <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 pt-1">
+                {ccwPersonaData.map((p) => (
+                  <div key={p.name} className="flex items-start gap-2 rounded border border-zinc-800/60 bg-zinc-950 p-2.5">
+                    <span className={`mt-1 size-2 rounded-full ${p.color} shrink-0`} />
+                    <div className="min-w-0">
+                      <div className="flex items-center justify-between gap-1">
+                        <span className="text-xs font-medium text-zinc-200 truncate">{p.name}</span>
+                        <span className="mono text-xs font-bold text-zinc-100">{p.count}</span>
+                      </div>
+                      <p className="text-[10px] text-zinc-400 mt-0.5">{p.pct}% of total • {p.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Industry Explorer & Filter Header */}
+            <div className="space-y-3 pt-2">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+                  <button
+                    onClick={() => setCcwCategoryFilter("all")}
+                    className={`focus-ring rounded border px-3 py-1.5 text-xs font-medium transition ${
+                      ccwCategoryFilter === "all"
+                        ? "border-amber-400/80 bg-zinc-900 text-zinc-100"
+                        : "border-zinc-800 bg-zinc-950 text-zinc-400 hover:text-zinc-200"
+                    }`}
+                  >
+                    All Sectors ({ccwIndustryData.length})
+                  </button>
+                  <button
+                    onClick={() => setCcwCategoryFilter("buyer")}
+                    className={`focus-ring rounded border px-3 py-1.5 text-xs font-medium transition ${
+                      ccwCategoryFilter === "buyer"
+                        ? "border-emerald-500/80 bg-zinc-900 text-emerald-300"
+                        : "border-zinc-800 bg-zinc-950 text-zinc-400 hover:text-zinc-200"
+                    }`}
+                  >
+                    Direct Buyers ({ccwIndustryData.filter((s) => s.category === "buyer").length})
+                  </button>
+                  <button
+                    onClick={() => setCcwCategoryFilter("partner")}
+                    className={`focus-ring rounded border px-3 py-1.5 text-xs font-medium transition ${
+                      ccwCategoryFilter === "partner"
+                        ? "border-violet-500/80 bg-zinc-900 text-violet-300"
+                        : "border-zinc-800 bg-zinc-950 text-zinc-400 hover:text-zinc-200"
+                    }`}
+                  >
+                    Tech Vendors & Partners ({ccwIndustryData.filter((s) => s.category === "partner").length})
+                  </button>
+                </div>
+
+                {/* Real-time Search Box */}
+                <div className="relative min-w-[260px]">
+                  <Search className="absolute left-3 top-1/2 size-3.5 -translate-y-1/2 text-zinc-500" />
+                  <input
+                    type="text"
+                    value={ccwIndustrySearch}
+                    onChange={(e) => setCcwIndustrySearch(e.target.value)}
+                    placeholder="Search industry or account (e.g. BFSI, Aflac)..."
+                    className="focus-ring w-full rounded border border-zinc-800 bg-zinc-900/90 pl-8 pr-3 py-1.5 text-xs text-zinc-200 placeholder:text-zinc-500"
+                  />
+                  {ccwIndustrySearch && (
+                    <button
+                      onClick={() => setCcwIndustrySearch("")}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] text-zinc-500 hover:text-zinc-300"
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Sectors Grid */}
+              <div className="grid gap-3 sm:grid-cols-2">
+                {filteredCcwIndustries.map((sector) => {
+                  const isExpanded = expandedSectorId === sector.id;
+                  return (
+                    <div
+                      key={sector.id}
+                      className={`rounded border transition p-4 space-y-3 bg-zinc-950 ${
+                        isExpanded
+                          ? "border-amber-400/70 shadow-sm"
+                          : "border-zinc-800 hover:border-zinc-700"
+                      }`}
+                    >
+                      {/* Top Row: Title, Category Badge, Count & Share */}
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <h4 className="text-sm font-semibold text-zinc-100">{sector.name}</h4>
+                            <span
+                              className={`text-[9px] uppercase px-1.5 py-0.5 rounded font-medium border ${
+                                sector.category === "buyer"
+                                  ? "border-emerald-800/80 bg-emerald-950/40 text-emerald-400"
+                                  : sector.category === "partner"
+                                  ? "border-violet-800/80 bg-violet-950/40 text-violet-400"
+                                  : "border-zinc-700 bg-zinc-900 text-zinc-400"
+                              }`}
+                            >
+                              {sector.category === "buyer"
+                                ? "Direct Buyer"
+                                : sector.category === "partner"
+                                ? "Tech Vendor"
+                                : "Diversified"}
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-zinc-500 mt-0.5">
+                            {sector.companiesCount} unique accounts • Primary: {sector.primaryPersonas}
+                          </p>
+                        </div>
+                        <div className="text-right shrink-0">
+                          <span className="mono text-sm font-bold text-amber-400">{sector.count} leads</span>
+                          <p className="text-[10px] text-zinc-500">{sector.pct}% of CCW</p>
+                        </div>
+                      </div>
+
+                      {/* Percentage Bar */}
+                      <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800/80">
+                        <div
+                          className={`h-full ${
+                            sector.category === "buyer"
+                              ? "bg-amber-400"
+                              : sector.category === "partner"
+                              ? "bg-violet-400"
+                              : "bg-zinc-400"
+                          }`}
+                          style={{ width: `${Math.min(sector.pct * 5, 100)}%` }}
+                        />
+                      </div>
+
+                      {/* Sample Accounts Pills */}
+                      <div>
+                        <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-medium">
+                          Sample Enterprise Accounts:
+                        </span>
+                        <div className="flex flex-wrap gap-1 mt-1">
+                          {sector.sampleCompanies.map((comp) => (
+                            <span
+                              key={comp}
+                              className="inline-flex items-center rounded border border-zinc-800 bg-zinc-900 px-2 py-0.5 text-[11px] text-zinc-300"
+                            >
+                              {comp}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Voice AI Hook / Wedge */}
+                      <div className="rounded border border-amber-900/30 bg-amber-950/20 p-2.5 text-xs text-amber-200/90 leading-relaxed">
+                        <div className="flex items-center gap-1.5 text-[10px] uppercase font-semibold text-amber-400 mb-1">
+                          <Zap className="size-3" /> Voice AI Value Proposition
+                        </div>
+                        {sector.voiceAiHook}
+                      </div>
+
+                      {/* Expandable Section */}
+                      {isExpanded && (
+                        <div className="pt-2 border-t border-zinc-800/80 space-y-2 text-xs">
+                          <div>
+                            <span className="text-zinc-500 font-medium text-[11px]">Sub-Industries:</span>
+                            <div className="flex flex-wrap gap-1 mt-1">
+                              {sector.subIndustries.map((sub) => (
+                                <span
+                                  key={sub}
+                                  className="rounded bg-zinc-900 px-1.5 py-0.5 text-[10px] text-zinc-400 border border-zinc-800"
+                                >
+                                  {sub}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                          <div>
+                            <span className="text-zinc-500 font-medium text-[11px]">Core Operational Pains:</span>
+                            <p className="text-zinc-400 mt-0.5 leading-relaxed">{sector.typicalPains}</p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Toggle Expand / Collapse Button */}
+                      <button
+                        onClick={() => setExpandedSectorId(isExpanded ? null : sector.id)}
+                        className="w-full flex items-center justify-center gap-1 pt-1 text-[11px] text-zinc-500 hover:text-zinc-300 transition"
+                      >
+                        {isExpanded ? (
+                          <>
+                            <span>Hide Details</span>
+                            <ChevronUp className="size-3" />
+                          </>
+                        ) : (
+                          <>
+                            <span>View Sub-Industries & Operational Pains</span>
+                            <ChevronDown className="size-3" />
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {filteredCcwIndustries.length === 0 && (
+                <div className="rounded border border-zinc-800 p-8 text-center text-zinc-500">
+                  <p className="text-sm">No industry or company matched &ldquo;{ccwIndustrySearch}&rdquo;.</p>
+                  <button
+                    onClick={() => {
+                      setCcwIndustrySearch("");
+                      setCcwCategoryFilter("all");
+                    }}
+                    className="mt-2 text-xs text-amber-400 hover:underline"
+                  >
+                    Reset filters
+                  </button>
+                </div>
+              )}
+            </div>
+          </Card>
 
           {/* =========================================================================
               CCW POST-EVENT CONTENT & SEQUENCES VAULT
