@@ -39,3 +39,21 @@
 * Never use generic canned SDR lines (*"Did I catch you at a bad time?"*, *"Are you looking to implement AI?"*).
 * Never claim Samsung backing.
 * Always lead with peer-to-peer executive credibility, sub-200ms latency, and hard ROI metrics (70% deflection, 60% cost reduction).
+
+---
+
+## 📬 Permanent Cold Email Copywriting Knowledge Base & Skills
+
+* Master Index: [docs/cold_email_copywriting/MASTER_PLAYBOOK_INDEX.md](file:///Users/cherry/Documents/gnani_call_copilot/docs/cold_email_copywriting/MASTER_PLAYBOOK_INDEX.md)
+* Codified Masterclasses: Breakdowns #01 through #06 (Nick Saraev, 4.5M Volume Study, Pipeline.tech, Lavender / Will Allred, Upreach Labs / Mustafa, Anivvo / Matt Lucero).
+* **Active Cold Email Writing Skill:** [.agents/skills/cold-email-writer/SKILL.md](file:///Users/cherry/Documents/gnani_call_copilot/.agents/skills/cold-email-writer/SKILL.md) (Installed globally and locally; conducts deep account research, outputs 3 tailored 40-word options, enforces lead-by-lead CSV execution, and retains self-updating company memory).
+
+---
+
+## 🇬🇧 UK Market Expansion Strategy & Account Intelligence
+
+* Full UK Strategic Blueprint: [docs/uk-context.md](file:///Users/cherry/Documents/gnani_call_copilot/docs/uk-context.md)
+* Target Focus: Upper Mid-Market (100–600 seats) across Building Societies, Specialist Lenders, DCAs, Social Housing, Parking, Breakdown, Water, and Vets.
+* Core Positioning: Sub-200ms voice AI over SIP, 70%+ queue deflection, in-call payment completion, 1-week builder sandbox POC.
+
+

@@ -72,3 +72,31 @@ Unlike Voice AI startups that rent 3rd-party models (e.g. chaining ElevenLabs fo
    * Reference the **CCW event anchor** or relevant research signal (e.g. open telephony job reqs).
    * Lead with hard operational benchmarks: **70%+ routine call deflection**, **60% reduction in cost-per-call**, **sub-200ms latency**, and **3-week SIP overlay deployment** with zero telephony rip-and-replace.
    * Speak to the prospect's actual industry (e.g., mortgage loan status for lenders, storm outage surges for utilities, resident maintenance triage for property management).
+
+---
+
+## 📬 6. Permanent Cold Email Copywriting Knowledge Base & Skills
+
+* Master Index & Pipeline: [docs/cold_email_copywriting/MASTER_PLAYBOOK_INDEX.md](file:///Users/cherry/Documents/gnani_call_copilot/docs/cold_email_copywriting/MASTER_PLAYBOOK_INDEX.md)
+* Codified Masterclasses: Breakdowns #01 through #06 in `docs/cold_email_copywriting/`.
+* **Active Cold Email Writing Skill:** [.agents/skills/cold-email-writer/SKILL.md](file:///Users/cherry/Documents/gnani_call_copilot/.agents/skills/cold-email-writer/SKILL.md) (Installed globally and locally; conducts deep account research, outputs 3 tailored 40-word options, enforces lead-by-lead CSV execution, and retains self-updating company memory).
+
+---
+
+## 🇬🇧 7. UK Market Expansion Intelligence & Account Directory
+
+* **Authoritative UK Strategy & Account Blueprint:** [docs/uk-context.md](file:///Users/cherry/Documents/gnani_call_copilot/docs/uk-context.md)
+* **Target Tier:** Upper Mid-Market & Tier-2 Challengers (100 to 600 contact center seats / £50M–£1B revenue). Avoid Big 4 banks.
+* **Core Target Sectors:**
+  1. *Building Societies / Mutuals:* Skipton, Coventry, Yorkshire, Leeds, Principality.
+  2. *Specialist Mortgage Lenders:* Paragon Banking Group, OSB Group, Aldermore, Shawbrook, Kensington.
+  3. *Debt Collection Agencies (DCAs):* Lowell Group, Cabot Financial, Arrow Global, PRA Group.
+  4. *Motor & Home Insurance:* Hastings Direct, Sabre, Markerstudy, Esure.
+  5. *Social Housing Trusts:* Clarion Housing Group, L&Q, Peabody, Places for People.
+  6. *Private Parking Management:* Parkingeye, Euro Car Parks, APCOA, NCP.
+  7. *Roadside Assistance & Recovery:* Call Assist, The AA, RAC, Green Flag.
+  8. *Regulated Water Monopolies:* Severn Trent Water, Thames Water, United Utilities.
+  9. *Corporate Veterinary Networks:* IVC Evidensia UK, CVS Group, Medivet.
+* **Key Messaging:** Sub-200ms sovereign voice engine over SIP, 70%+ deflection, in-call PCI payments, 1-week sandbox builder POC with zero sales push.
+
+
