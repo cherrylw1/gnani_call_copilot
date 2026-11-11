@@ -46,6 +46,44 @@ export const internationalOutreachData = {
         "Not Logged": 18,
         "Not Logged - Auto cut": 243,
         "Voice Mail": 85
+      },
+      "phaseSummaries": {
+        "preEvent": {
+          "calls": 1156,
+          "accounts": 375,
+          "leads": 652,
+          "connected": 197,
+          "notes": 169,
+          "meetingSignals": 6,
+          "preEventCalls": 1156,
+          "postEventCalls": 0,
+          "statusCounts": {
+            "Answered": 197,
+            "Errored": 9,
+            "Ivr": 16,
+            "Not Answered": 584,
+            "Not Answered - Call Screener": 13,
+            "Not Logged": 15,
+            "Not Logged - Auto cut": 237,
+            "Voice Mail": 85
+          }
+        },
+        "postEvent": {
+          "calls": 74,
+          "accounts": 49,
+          "leads": 58,
+          "connected": 22,
+          "notes": 20,
+          "meetingSignals": 12,
+          "preEventCalls": 0,
+          "postEventCalls": 74,
+          "statusCounts": {
+            "Answered": 22,
+            "Not Answered": 43,
+            "Not Logged": 3,
+            "Not Logged - Auto cut": 6
+          }
+        }
       }
     },
     "Philippines": {
@@ -65,6 +103,41 @@ export const internationalOutreachData = {
         "Not Logged": 10,
         "Not Logged - Auto cut": 2,
         "Voice Mail": 2
+      },
+      "phaseSummaries": {
+        "preEvent": {
+          "calls": 2,
+          "accounts": 1,
+          "leads": 1,
+          "connected": 0,
+          "notes": 0,
+          "meetingSignals": 0,
+          "preEventCalls": 2,
+          "postEventCalls": 0,
+          "statusCounts": {
+            "Not Answered": 1,
+            "Not Logged - Auto cut": 1
+          }
+        },
+        "postEvent": {
+          "calls": 218,
+          "accounts": 28,
+          "leads": 151,
+          "connected": 42,
+          "notes": 50,
+          "meetingSignals": 7,
+          "preEventCalls": 0,
+          "postEventCalls": 218,
+          "statusCounts": {
+            "Answered": 42,
+            "Errored": 1,
+            "Ivr": 4,
+            "Not Answered": 158,
+            "Not Logged": 10,
+            "Not Logged - Auto cut": 1,
+            "Voice Mail": 2
+          }
+        }
       }
     },
     "Other international": {
@@ -85,6 +158,44 @@ export const internationalOutreachData = {
         "Not Logged": 7,
         "Not Logged - Auto cut": 77,
         "Voice Mail": 32
+      },
+      "phaseSummaries": {
+        "preEvent": {
+          "calls": 245,
+          "accounts": 122,
+          "leads": 162,
+          "connected": 18,
+          "notes": 16,
+          "meetingSignals": 3,
+          "preEventCalls": 245,
+          "postEventCalls": 0,
+          "statusCounts": {
+            "Answered": 18,
+            "Errored": 4,
+            "Ivr": 4,
+            "Not Answered": 110,
+            "Not Answered - Call Screener": 6,
+            "Not Logged": 7,
+            "Not Logged - Auto cut": 73,
+            "Voice Mail": 23
+          }
+        },
+        "postEvent": {
+          "calls": 31,
+          "accounts": 29,
+          "leads": 29,
+          "connected": 2,
+          "notes": 1,
+          "meetingSignals": 0,
+          "preEventCalls": 0,
+          "postEventCalls": 31,
+          "statusCounts": {
+            "Answered": 2,
+            "Not Answered": 16,
+            "Not Logged - Auto cut": 4,
+            "Voice Mail": 9
+          }
+        }
       }
     }
   },
@@ -106,6 +217,47 @@ export const internationalOutreachData = {
       "Not Logged": 35,
       "Not Logged - Auto cut": 322,
       "Voice Mail": 119
+    },
+    "phaseSummaries": {
+      "preEvent": {
+        "calls": 1403,
+        "accounts": 498,
+        "leads": 764,
+        "connected": 215,
+        "notes": 185,
+        "meetingSignals": 9,
+        "preEventCalls": 1403,
+        "postEventCalls": 0,
+        "statusCounts": {
+          "Answered": 215,
+          "Errored": 13,
+          "Ivr": 20,
+          "Not Answered": 695,
+          "Not Answered - Call Screener": 19,
+          "Not Logged": 22,
+          "Not Logged - Auto cut": 311,
+          "Voice Mail": 108
+        }
+      },
+      "postEvent": {
+        "calls": 323,
+        "accounts": 106,
+        "leads": 238,
+        "connected": 66,
+        "notes": 71,
+        "meetingSignals": 19,
+        "preEventCalls": 0,
+        "postEventCalls": 323,
+        "statusCounts": {
+          "Answered": 66,
+          "Errored": 1,
+          "Ivr": 4,
+          "Not Answered": 217,
+          "Not Logged": 13,
+          "Not Logged - Auto cut": 11,
+          "Voice Mail": 11
+        }
+      }
     }
   },
   "accounts": [
