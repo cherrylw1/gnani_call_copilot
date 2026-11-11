@@ -26,6 +26,7 @@ import {
 import { PageTitle } from "@/components/page-title";
 import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/status-badge";
+import { usOutboundEmailDataWithDerivedMetrics } from "@/lib/us-email-outreach-data";
 
 type ActiveTab = "overview" | "ccw" | "outbound" | "displacement";
 type CcwTier = "tier1_2" | "tier3" | "tier4";
@@ -1404,21 +1405,21 @@ Would a 1-page architecture teardown be helpful for your customer operations tea
                 <Mail className="size-3.5 text-blue-400" />
               </div>
               <div>
-                <p className="mono text-2xl font-semibold text-zinc-100">3,244 emails</p>
+                <p className="mono text-2xl font-semibold text-zinc-100">{usOutboundEmailDataWithDerivedMetrics.totalSent.toLocaleString()} emails</p>
                 <p className="text-xs text-zinc-400 mt-0.5">Customized per Account Hiring Signal</p>
               </div>
               <div className="space-y-1.5 border-t border-zinc-800 pt-2 text-xs">
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Open Rate:</span>
-                  <span className="mono text-zinc-200 font-medium">58% (~1,882 opens)</span>
+                  <span className="mono text-zinc-200 font-medium">{usOutboundEmailDataWithDerivedMetrics.openRatePct}% (~{usOutboundEmailDataWithDerivedMetrics.reportedOpens.toLocaleString()} opens)</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-zinc-500">Total Replies:</span>
-                  <span className="mono text-zinc-200 font-medium">14 replies</span>
+                  <span className="mono text-zinc-200 font-medium">{usOutboundEmailDataWithDerivedMetrics.totalReplies} replies</span>
                 </div>
                 <div className="flex justify-between border-t border-zinc-800/80 pt-1 text-emerald-400 font-medium">
                   <span>Meetings Booked:</span>
-                  <span className="mono font-bold">1 meeting</span>
+                  <span className="mono font-bold">{usOutboundEmailDataWithDerivedMetrics.meetingsBooked} meeting</span>
                 </div>
               </div>
             </Card>
@@ -1466,7 +1467,7 @@ Would a 1-page architecture teardown be helpful for your customer operations tea
                   Each email was custom-written around specific open engineering/telephony requisitions and LOS workflows.
                 </p>
               </div>
-              <StatusBadge tone="neutral">1 Meeting Converted</StatusBadge>
+              <StatusBadge tone="neutral">{usOutboundEmailDataWithDerivedMetrics.meetingsBooked} Meeting Converted</StatusBadge>
             </div>
 
             {/* Strategy Highlights */}
