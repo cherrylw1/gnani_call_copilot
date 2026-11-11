@@ -29,43 +29,43 @@ export const internationalOutreachData = {
   },
   "regions": {
     "UAE": {
-      "calls": 1230,
-      "accounts": 416,
-      "leads": 704,
-      "connected": 219,
-      "notes": 189,
+      "calls": 1298,
+      "accounts": 422,
+      "leads": 727,
+      "connected": 220,
+      "notes": 190,
       "meetingSignals": 18,
-      "preEventCalls": 1156,
+      "preEventCalls": 1224,
       "postEventCalls": 74,
       "statusCounts": {
-        "Answered": 219,
-        "Errored": 9,
-        "Ivr": 16,
-        "Not Answered": 627,
-        "Not Answered - Call Screener": 13,
-        "Not Logged": 18,
-        "Not Logged - Auto cut": 243,
-        "Voice Mail": 85
+        "Answered": 220,
+        "Errored": 10,
+        "Ivr": 17,
+        "Not Answered": 659,
+        "Not Answered - Call Screener": 14,
+        "Not Logged": 22,
+        "Not Logged - Auto cut": 267,
+        "Voice Mail": 89
       },
       "phaseSummaries": {
         "preEvent": {
-          "calls": 1156,
-          "accounts": 375,
-          "leads": 652,
-          "connected": 197,
-          "notes": 169,
+          "calls": 1224,
+          "accounts": 381,
+          "leads": 675,
+          "connected": 198,
+          "notes": 170,
           "meetingSignals": 6,
-          "preEventCalls": 1156,
+          "preEventCalls": 1224,
           "postEventCalls": 0,
           "statusCounts": {
-            "Answered": 197,
-            "Errored": 9,
-            "Ivr": 16,
-            "Not Answered": 584,
-            "Not Answered - Call Screener": 13,
-            "Not Logged": 15,
-            "Not Logged - Auto cut": 237,
-            "Voice Mail": 85
+            "Answered": 198,
+            "Errored": 10,
+            "Ivr": 17,
+            "Not Answered": 616,
+            "Not Answered - Call Screener": 14,
+            "Not Logged": 19,
+            "Not Logged - Auto cut": 261,
+            "Voice Mail": 89
           }
         },
         "postEvent": {
@@ -140,68 +140,183 @@ export const internationalOutreachData = {
         }
       }
     },
-    "Other international": {
-      "calls": 276,
-      "accounts": 149,
-      "leads": 190,
-      "connected": 20,
-      "notes": 17,
-      "meetingSignals": 3,
-      "preEventCalls": 245,
-      "postEventCalls": 31,
+    "US": {
+      "calls": 36,
+      "accounts": 26,
+      "leads": 27,
+      "connected": 1,
+      "notes": 1,
+      "meetingSignals": 0,
+      "preEventCalls": 29,
+      "postEventCalls": 7,
       "statusCounts": {
-        "Answered": 20,
-        "Errored": 4,
-        "Ivr": 4,
-        "Not Answered": 126,
-        "Not Answered - Call Screener": 6,
-        "Not Logged": 7,
-        "Not Logged - Auto cut": 77,
-        "Voice Mail": 32
+        "Answered": 1,
+        "Ivr": 1,
+        "Not Answered": 10,
+        "Not Answered - Call Screener": 3,
+        "Not Logged": 1,
+        "Not Logged - Auto cut": 4,
+        "Voice Mail": 16
       },
       "phaseSummaries": {
         "preEvent": {
-          "calls": 245,
-          "accounts": 122,
-          "leads": 162,
-          "connected": 18,
-          "notes": 16,
-          "meetingSignals": 3,
-          "preEventCalls": 245,
+          "calls": 29,
+          "accounts": 19,
+          "leads": 20,
+          "connected": 1,
+          "notes": 1,
+          "meetingSignals": 0,
+          "preEventCalls": 29,
           "postEventCalls": 0,
           "statusCounts": {
-            "Answered": 18,
-            "Errored": 4,
-            "Ivr": 4,
-            "Not Answered": 110,
-            "Not Answered - Call Screener": 6,
-            "Not Logged": 7,
-            "Not Logged - Auto cut": 73,
-            "Voice Mail": 23
+            "Answered": 1,
+            "Ivr": 1,
+            "Not Answered": 8,
+            "Not Answered - Call Screener": 3,
+            "Not Logged": 1,
+            "Not Logged - Auto cut": 4,
+            "Voice Mail": 11
           }
         },
         "postEvent": {
-          "calls": 31,
-          "accounts": 29,
-          "leads": 29,
+          "calls": 7,
+          "accounts": 7,
+          "leads": 7,
+          "connected": 0,
+          "notes": 0,
+          "meetingSignals": 0,
+          "preEventCalls": 0,
+          "postEventCalls": 7,
+          "statusCounts": {
+            "Not Answered": 2,
+            "Voice Mail": 5
+          }
+        }
+      }
+    },
+    "Needs classification": {
+      "calls": 172,
+      "accounts": 102,
+      "leads": 126,
+      "connected": 18,
+      "notes": 15,
+      "meetingSignals": 3,
+      "preEventCalls": 148,
+      "postEventCalls": 24,
+      "statusCounts": {
+        "Answered": 18,
+        "Errored": 3,
+        "Ivr": 2,
+        "Not Answered": 84,
+        "Not Answered - Call Screener": 2,
+        "Not Logged": 2,
+        "Not Logged - Auto cut": 49,
+        "Voice Mail": 12
+      },
+      "phaseSummaries": {
+        "preEvent": {
+          "calls": 148,
+          "accounts": 82,
+          "leads": 105,
+          "connected": 16,
+          "notes": 14,
+          "meetingSignals": 3,
+          "preEventCalls": 148,
+          "postEventCalls": 0,
+          "statusCounts": {
+            "Answered": 16,
+            "Errored": 3,
+            "Ivr": 2,
+            "Not Answered": 70,
+            "Not Answered - Call Screener": 2,
+            "Not Logged": 2,
+            "Not Logged - Auto cut": 45,
+            "Voice Mail": 8
+          }
+        },
+        "postEvent": {
+          "calls": 24,
+          "accounts": 22,
+          "leads": 22,
           "connected": 2,
           "notes": 1,
           "meetingSignals": 0,
           "preEventCalls": 0,
-          "postEventCalls": 31,
+          "postEventCalls": 24,
           "statusCounts": {
             "Answered": 2,
-            "Not Answered": 16,
+            "Not Answered": 14,
             "Not Logged - Auto cut": 4,
-            "Voice Mail": 9
+            "Voice Mail": 4
           }
+        }
+      }
+    }
+  },
+  "allNonUSA": {
+    "calls": 1690,
+    "accounts": 553,
+    "leads": 970,
+    "connected": 280,
+    "notes": 255,
+    "meetingSignals": 28,
+    "preEventCalls": 1374,
+    "postEventCalls": 316,
+    "statusCounts": {
+      "Answered": 280,
+      "Errored": 14,
+      "Ivr": 23,
+      "Not Answered": 902,
+      "Not Answered - Call Screener": 16,
+      "Not Logged": 34,
+      "Not Logged - Auto cut": 318,
+      "Voice Mail": 103
+    },
+    "phaseSummaries": {
+      "preEvent": {
+        "calls": 1374,
+        "accounts": 464,
+        "leads": 746,
+        "connected": 214,
+        "notes": 184,
+        "meetingSignals": 9,
+        "preEventCalls": 1374,
+        "postEventCalls": 0,
+        "statusCounts": {
+          "Answered": 214,
+          "Errored": 13,
+          "Ivr": 19,
+          "Not Answered": 687,
+          "Not Answered - Call Screener": 16,
+          "Not Logged": 21,
+          "Not Logged - Auto cut": 307,
+          "Voice Mail": 97
+        }
+      },
+      "postEvent": {
+        "calls": 316,
+        "accounts": 99,
+        "leads": 231,
+        "connected": 66,
+        "notes": 71,
+        "meetingSignals": 19,
+        "preEventCalls": 0,
+        "postEventCalls": 316,
+        "statusCounts": {
+          "Answered": 66,
+          "Errored": 1,
+          "Ivr": 4,
+          "Not Answered": 215,
+          "Not Logged": 13,
+          "Not Logged - Auto cut": 11,
+          "Voice Mail": 6
         }
       }
     }
   },
   "allInternational": {
     "calls": 1726,
-    "accounts": 594,
+    "accounts": 579,
     "leads": 995,
     "connected": 281,
     "notes": 256,
@@ -221,7 +336,7 @@ export const internationalOutreachData = {
     "phaseSummaries": {
       "preEvent": {
         "calls": 1403,
-        "accounts": 498,
+        "accounts": 483,
         "leads": 764,
         "connected": 215,
         "notes": 185,
@@ -1045,6 +1160,99 @@ export const internationalOutreachData = {
       ]
     },
     {
+      "id": "UAE|mashreq",
+      "region": "UAE",
+      "account": "Mashreq",
+      "calls": 12,
+      "leads": 9,
+      "connected": 5,
+      "notesCount": 5,
+      "meetingSignals": 0,
+      "preEventCalls": 12,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-28",
+      "latestOutcome": "Neutral",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Amanda Cano"
+        },
+        {
+          "name": "Vimal Pallipurath"
+        },
+        {
+          "name": "Andrus Jebakumar"
+        },
+        {
+          "name": "Devendra Kumar"
+        },
+        {
+          "name": "Ranjith Gokul"
+        },
+        {
+          "name": "Arun Mathur"
+        },
+        {
+          "name": "Kartik Taneja"
+        },
+        {
+          "name": "Sudha Khandelwal"
+        },
+        {
+          "name": "Faisal Mohammed ALShimmari"
+        }
+      ],
+      "notes": [
+        {
+          "date": "2026-10-28",
+          "displayDate": "Oct 28, 2026",
+          "phase": "Pre-event",
+          "name": "Amanda Cano",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "God disconnected in the middle."
+        },
+        {
+          "date": "2026-10-28",
+          "displayDate": "Oct 28, 2026",
+          "phase": "Pre-event",
+          "name": "Andrus Jebakumar",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "They will drop by the booth."
+        },
+        {
+          "date": "2026-10-28",
+          "displayDate": "Oct 28, 2026",
+          "phase": "Pre-event",
+          "name": "Devendra Kumar",
+          "status": "Answered",
+          "outcome": "Wrong contact",
+          "note": "It's a wrong contact number."
+        },
+        {
+          "date": "2026-10-27",
+          "displayDate": "Oct 27, 2026",
+          "phase": "Pre-event",
+          "name": "Ranjith Gokul",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "he said he won't be making to it to the event this year, and when I asked about who will take the decision about conversation air, he said somebody from the Edge of Digital team might."
+        },
+        {
+          "date": "2026-10-14",
+          "displayDate": "Oct 14, 2026",
+          "phase": "Pre-event",
+          "name": "Faisal Mohammed ALShimmari",
+          "status": "Answered",
+          "outcome": "Negative",
+          "note": "Set \"not interested\" and ask to delete this content."
+        }
+      ]
+    },
+    {
       "id": "Philippines|philippine national bank",
       "region": "Philippines",
       "account": "Philippine National Bank",
@@ -1118,12 +1326,12 @@ export const internationalOutreachData = {
       "id": "UAE|first abu dhabi bank",
       "region": "UAE",
       "account": "First Abu Dhabi Bank",
-      "calls": 24,
+      "calls": 26,
       "leads": 13,
       "connected": 4,
       "notesCount": 4,
       "meetingSignals": 0,
-      "preEventCalls": 19,
+      "preEventCalls": 21,
       "postEventCalls": 5,
       "lastTouch": "2026-11-11",
       "latestOutcome": "No outcome recorded",
@@ -1209,84 +1417,6 @@ export const internationalOutreachData = {
           "status": "Answered",
           "outcome": "Neutral",
           "note": "said, they're not attending the event as far as he knows, and he's also not interested in knowing more about our company."
-        }
-      ]
-    },
-    {
-      "id": "UAE|mashreq",
-      "region": "UAE",
-      "account": "Mashreq",
-      "calls": 7,
-      "leads": 7,
-      "connected": 4,
-      "notesCount": 4,
-      "meetingSignals": 0,
-      "preEventCalls": 7,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "Neutral",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Amanda Cano"
-        },
-        {
-          "name": "Vimal Pallipurath"
-        },
-        {
-          "name": "Andrus Jebakumar"
-        },
-        {
-          "name": "Ranjith Gokul"
-        },
-        {
-          "name": "Arun Mathur"
-        },
-        {
-          "name": "Sudha Khandelwal"
-        },
-        {
-          "name": "Faisal Mohammed ALShimmari"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-28",
-          "displayDate": "Oct 28, 2026",
-          "phase": "Pre-event",
-          "name": "Amanda Cano",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "God disconnected in the middle."
-        },
-        {
-          "date": "2026-10-28",
-          "displayDate": "Oct 28, 2026",
-          "phase": "Pre-event",
-          "name": "Andrus Jebakumar",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "They will drop by the booth."
-        },
-        {
-          "date": "2026-10-27",
-          "displayDate": "Oct 27, 2026",
-          "phase": "Pre-event",
-          "name": "Ranjith Gokul",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "he said he won't be making to it to the event this year, and when I asked about who will take the decision about conversation air, he said somebody from the Edge of Digital team might."
-        },
-        {
-          "date": "2026-10-14",
-          "displayDate": "Oct 14, 2026",
-          "phase": "Pre-event",
-          "name": "Faisal Mohammed ALShimmari",
-          "status": "Answered",
-          "outcome": "Negative",
-          "note": "Set \"not interested\" and ask to delete this content."
         }
       ]
     },
@@ -1505,12 +1635,12 @@ export const internationalOutreachData = {
       "id": "UAE|commercial bank of dubai",
       "region": "UAE",
       "account": "Commercial Bank Of Dubai",
-      "calls": 21,
-      "leads": 11,
+      "calls": 24,
+      "leads": 13,
       "connected": 3,
       "notesCount": 3,
       "meetingSignals": 0,
-      "preEventCalls": 21,
+      "preEventCalls": 24,
       "postEventCalls": 0,
       "lastTouch": "2026-10-30",
       "latestOutcome": "No outcome recorded",
@@ -1539,6 +1669,12 @@ export const internationalOutreachData = {
         },
         {
           "name": "Binze John"
+        },
+        {
+          "name": "Martins Berzins"
+        },
+        {
+          "name": "Max Boulat"
         },
         {
           "name": "Benny Jones"
@@ -1923,8 +2059,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|alizz islamic bank",
-      "region": "Other international",
+      "id": "Needs classification|alizz islamic bank",
+      "region": "Needs classification",
       "account": "Alizz Islamic Bank",
       "calls": 3,
       "leads": 2,
@@ -2346,12 +2482,12 @@ export const internationalOutreachData = {
       "id": "UAE|mashreq bank",
       "region": "UAE",
       "account": "Mashreq bank",
-      "calls": 10,
-      "leads": 8,
+      "calls": 15,
+      "leads": 11,
       "connected": 2,
       "notesCount": 2,
       "meetingSignals": 0,
-      "preEventCalls": 9,
+      "preEventCalls": 14,
       "postEventCalls": 1,
       "lastTouch": "2026-11-02",
       "latestOutcome": "No outcome recorded",
@@ -2364,6 +2500,9 @@ export const internationalOutreachData = {
           "name": "Rahul otawat"
         },
         {
+          "name": "Mohamed Galal"
+        },
+        {
           "name": "Shilp Kochhar"
         },
         {
@@ -2373,10 +2512,16 @@ export const internationalOutreachData = {
           "name": "Gurcharan Chhabra"
         },
         {
+          "name": "Adarsh Desai"
+        },
+        {
           "name": "Swetha Maria Sainath"
         },
         {
           "name": "Rania Nerhal"
+        },
+        {
+          "name": "Yogesh Kapur"
         },
         {
           "name": "Fernando Morillo"
@@ -3075,8 +3220,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|development bank",
-      "region": "Other international",
+      "id": "Needs classification|development bank",
+      "region": "Needs classification",
       "account": "Development Bank",
       "calls": 3,
       "leads": 1,
@@ -3244,8 +3389,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|kalyan jewellers",
-      "region": "Other international",
+      "id": "Needs classification|kalyan jewellers",
+      "region": "Needs classification",
       "account": "Kalyan Jewellers",
       "calls": 2,
       "leads": 1,
@@ -3277,8 +3422,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|bank nizwa saog",
-      "region": "Other international",
+      "id": "Needs classification|bank nizwa saog",
+      "region": "Needs classification",
       "account": "Bank Nizwa SAOG",
       "calls": 1,
       "leads": 1,
@@ -3610,6 +3755,47 @@ export const internationalOutreachData = {
       ]
     },
     {
+      "id": "UAE|abu dhabi commercial bank (adcb)",
+      "region": "UAE",
+      "account": "Abu Dhabi Commercial Bank (ADCB)",
+      "calls": 8,
+      "leads": 3,
+      "connected": 2,
+      "notesCount": 1,
+      "meetingSignals": 0,
+      "preEventCalls": 8,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-28",
+      "latestOutcome": "Not set",
+      "campaigns": [
+        "BFSI UAE INDIAN",
+        "One Off Call",
+        "UAE_Non_Indian_BFSI"
+      ],
+      "contacts": [
+        {
+          "name": "Michael Hartmann"
+        },
+        {
+          "name": "Shameek Kundu"
+        },
+        {
+          "name": "Pedro Sousa Cardoso"
+        }
+      ],
+      "notes": [
+        {
+          "date": "2026-10-21",
+          "displayDate": "Oct 21, 2026",
+          "phase": "Pre-event",
+          "name": "Shameek Kundu",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "Disconnect your right after picking."
+        }
+      ]
+    },
+    {
       "id": "UAE|mambu",
       "region": "UAE",
       "account": "Mambu",
@@ -3687,6 +3873,46 @@ export const internationalOutreachData = {
           "status": "Answered",
           "outcome": "Neutral",
           "note": "Said not interested"
+        }
+      ]
+    },
+    {
+      "id": "UAE|flydubai",
+      "region": "UAE",
+      "account": "flydubai",
+      "calls": 5,
+      "leads": 3,
+      "connected": 2,
+      "notesCount": 1,
+      "meetingSignals": 0,
+      "preEventCalls": 5,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-29",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Anupam Tripathi"
+        },
+        {
+          "name": "Andrés Uribe"
+        },
+        {
+          "name": "Jayadev Nair"
+        }
+      ],
+      "notes": [
+        {
+          "date": "2026-10-28",
+          "displayDate": "Oct 28, 2026",
+          "phase": "Pre-event",
+          "name": "Andrés Uribe",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "He mentioned he won't be at the event and said we should not have called on his personal number and asked me to send an email instead."
         }
       ]
     },
@@ -3770,47 +3996,6 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "UAE|abu dhabi commercial bank (adcb)",
-      "region": "UAE",
-      "account": "Abu Dhabi Commercial Bank (ADCB)",
-      "calls": 4,
-      "leads": 3,
-      "connected": 2,
-      "notesCount": 1,
-      "meetingSignals": 0,
-      "preEventCalls": 4,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "Not set",
-      "campaigns": [
-        "BFSI UAE INDIAN",
-        "One Off Call",
-        "UAE_Non_Indian_BFSI"
-      ],
-      "contacts": [
-        {
-          "name": "Michael Hartmann"
-        },
-        {
-          "name": "Shameek Kundu"
-        },
-        {
-          "name": "Pedro Sousa Cardoso"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-21",
-          "displayDate": "Oct 21, 2026",
-          "phase": "Pre-event",
-          "name": "Shameek Kundu",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "Disconnect your right after picking."
-        }
-      ]
-    },
-    {
       "id": "UAE|deutsche bank",
       "region": "UAE",
       "account": "Deutsche Bank",
@@ -3848,46 +4033,6 @@ export const internationalOutreachData = {
           "status": "Answered",
           "outcome": "Neutral",
           "note": "He said he might drop by our booth."
-        }
-      ]
-    },
-    {
-      "id": "UAE|flydubai",
-      "region": "UAE",
-      "account": "flydubai",
-      "calls": 3,
-      "leads": 3,
-      "connected": 2,
-      "notesCount": 1,
-      "meetingSignals": 0,
-      "preEventCalls": 3,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Anupam Tripathi"
-        },
-        {
-          "name": "Andrés Uribe"
-        },
-        {
-          "name": "Jayadev Nair"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-28",
-          "displayDate": "Oct 28, 2026",
-          "phase": "Pre-event",
-          "name": "Andrés Uribe",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "He mentioned he won't be at the event and said we should not have called on his personal number and asked me to send an email instead."
         }
       ]
     },
@@ -4205,6 +4350,50 @@ export const internationalOutreachData = {
       ]
     },
     {
+      "id": "UAE|chalhoub group",
+      "region": "UAE",
+      "account": "Chalhoub Group",
+      "calls": 9,
+      "leads": 4,
+      "connected": 1,
+      "notesCount": 1,
+      "meetingSignals": 0,
+      "preEventCalls": 9,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-30",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "Dubai_FinTech_Summit_Arab_and_Global_Mobile_Leads_Ranked_Cleaned",
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Nehaal Kadge"
+        },
+        {
+          "name": "Magdalena Giersz"
+        },
+        {
+          "name": "JAD Sfeir"
+        },
+        {
+          "name": "Patrick Chalhoub"
+        }
+      ],
+      "notes": [
+        {
+          "date": "2026-10-28",
+          "displayDate": "Oct 28, 2026",
+          "phase": "Pre-event",
+          "name": "JAD Sfeir",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "Ask to send an email instead."
+        }
+      ]
+    },
+    {
       "id": "UAE|al masraf bank",
       "region": "UAE",
       "account": "Al Masraf Bank",
@@ -4370,6 +4559,96 @@ export const internationalOutreachData = {
           "status": "Answered",
           "outcome": "Neutral",
           "note": "He mentioned they are certainly interested in coming to our booth and asked me not to send an email instead of WhatsApp to his number as it would be much easier to coordinate."
+        }
+      ]
+    },
+    {
+      "id": "UAE|majid al futtaim",
+      "region": "UAE",
+      "account": "Majid Al Futtaim",
+      "calls": 7,
+      "leads": 6,
+      "connected": 1,
+      "notesCount": 1,
+      "meetingSignals": 0,
+      "preEventCalls": 7,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-28",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Sher Ali"
+        },
+        {
+          "name": "Rania Basma-Kwas"
+        },
+        {
+          "name": "Ocean Jangda"
+        },
+        {
+          "name": "Phalgun R."
+        },
+        {
+          "name": "Prabhat Seelam"
+        },
+        {
+          "name": "kinda Alkoud"
+        }
+      ],
+      "notes": [
+        {
+          "date": "2026-10-28",
+          "displayDate": "Oct 28, 2026",
+          "phase": "Pre-event",
+          "name": "Phalgun R.",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "He said he would be at the event, and he would make sure to drop by, and he was okay with us dropping an invite."
+        }
+      ]
+    },
+    {
+      "id": "UAE|landmark group",
+      "region": "UAE",
+      "account": "Landmark Group",
+      "calls": 6,
+      "leads": 4,
+      "connected": 1,
+      "notesCount": 1,
+      "meetingSignals": 0,
+      "preEventCalls": 6,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-28",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Shabbir Ahmad"
+        },
+        {
+          "name": "Pawnesh Maniramka"
+        },
+        {
+          "name": "Harshal Sharma"
+        },
+        {
+          "name": "Vikram Idnani"
+        }
+      ],
+      "notes": [
+        {
+          "date": "2026-10-28",
+          "displayDate": "Oct 28, 2026",
+          "phase": "Pre-event",
+          "name": "Harshal Sharma",
+          "status": "Answered",
+          "outcome": "Neutral",
+          "note": "Disconnected the call right off the picking."
         }
       ]
     },
@@ -4637,87 +4916,6 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "UAE|majid al futtaim",
-      "region": "UAE",
-      "account": "Majid Al Futtaim",
-      "calls": 5,
-      "leads": 5,
-      "connected": 1,
-      "notesCount": 1,
-      "meetingSignals": 0,
-      "preEventCalls": 5,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Sher Ali"
-        },
-        {
-          "name": "Rania Basma-Kwas"
-        },
-        {
-          "name": "Phalgun R."
-        },
-        {
-          "name": "Prabhat Seelam"
-        },
-        {
-          "name": "kinda Alkoud"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-28",
-          "displayDate": "Oct 28, 2026",
-          "phase": "Pre-event",
-          "name": "Phalgun R.",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "He said he would be at the event, and he would make sure to drop by, and he was okay with us dropping an invite."
-        }
-      ]
-    },
-    {
-      "id": "Other international|mashreq",
-      "region": "Other international",
-      "account": "Mashreq",
-      "calls": 5,
-      "leads": 2,
-      "connected": 1,
-      "notesCount": 1,
-      "meetingSignals": 0,
-      "preEventCalls": 5,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "Wrong contact",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Devendra Kumar"
-        },
-        {
-          "name": "Kartik Taneja"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-28",
-          "displayDate": "Oct 28, 2026",
-          "phase": "Pre-event",
-          "name": "Devendra Kumar",
-          "status": "Answered",
-          "outcome": "Wrong contact",
-          "note": "It's a wrong contact number."
-        }
-      ]
-    },
-    {
       "id": "UAE|rakinsurance",
       "region": "UAE",
       "account": "RAKINSURANCE",
@@ -4899,47 +5097,6 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "UAE|chalhoub group",
-      "region": "UAE",
-      "account": "Chalhoub Group",
-      "calls": 4,
-      "leads": 3,
-      "connected": 1,
-      "notesCount": 1,
-      "meetingSignals": 0,
-      "preEventCalls": 4,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "Dubai_FinTech_Summit_Arab_and_Global_Mobile_Leads_Ranked_Cleaned",
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Magdalena Giersz"
-        },
-        {
-          "name": "Nehaal Kadge"
-        },
-        {
-          "name": "JAD Sfeir"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-28",
-          "displayDate": "Oct 28, 2026",
-          "phase": "Pre-event",
-          "name": "JAD Sfeir",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "Ask to send an email instead."
-        }
-      ]
-    },
-    {
       "id": "UAE|emirates investment bank",
       "region": "UAE",
       "account": "Emirates Investment Bank",
@@ -5018,45 +5175,6 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "UAE|landmark group",
-      "region": "UAE",
-      "account": "Landmark Group",
-      "calls": 4,
-      "leads": 3,
-      "connected": 1,
-      "notesCount": 1,
-      "meetingSignals": 0,
-      "preEventCalls": 4,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Shabbir Ahmad"
-        },
-        {
-          "name": "Pawnesh Maniramka"
-        },
-        {
-          "name": "Harshal Sharma"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-28",
-          "displayDate": "Oct 28, 2026",
-          "phase": "Pre-event",
-          "name": "Harshal Sharma",
-          "status": "Answered",
-          "outcome": "Neutral",
-          "note": "Disconnected the call right off the picking."
-        }
-      ]
-    },
-    {
       "id": "UAE|national bank of bahrain",
       "region": "UAE",
       "account": "National Bank of Bahrain",
@@ -5094,8 +5212,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|network international",
-      "region": "Other international",
+      "id": "Needs classification|network international",
+      "region": "Needs classification",
       "account": "Network International",
       "calls": 4,
       "leads": 3,
@@ -5203,6 +5321,40 @@ export const internationalOutreachData = {
           "status": "Answered",
           "outcome": "Neutral",
           "note": "They will try and be their at the booth."
+        }
+      ]
+    },
+    {
+      "id": "UAE|fab",
+      "region": "UAE",
+      "account": "FAB",
+      "calls": 3,
+      "leads": 1,
+      "connected": 1,
+      "notesCount": 1,
+      "meetingSignals": 0,
+      "preEventCalls": 3,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-30",
+      "latestOutcome": "Not set",
+      "campaigns": [
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Abhishek Gupta"
+        }
+      ],
+      "notes": [
+        {
+          "date": "2026-10-30",
+          "displayDate": "Oct 30, 2026",
+          "phase": "Pre-event",
+          "name": "Abhishek Gupta",
+          "status": "Answered",
+          "outcome": "Not set",
+          "note": "Call got disconnected in the middle."
         }
       ]
     },
@@ -5417,8 +5569,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|apparel group",
-      "region": "Other international",
+      "id": "Needs classification|apparel group",
+      "region": "Needs classification",
       "account": "Apparel Group",
       "calls": 2,
       "leads": 2,
@@ -5619,39 +5771,6 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "UAE|fab",
-      "region": "UAE",
-      "account": "FAB",
-      "calls": 2,
-      "leads": 1,
-      "connected": 1,
-      "notesCount": 1,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-30",
-      "latestOutcome": "Not set",
-      "campaigns": [
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned"
-      ],
-      "contacts": [
-        {
-          "name": "Abhishek Gupta"
-        }
-      ],
-      "notes": [
-        {
-          "date": "2026-10-30",
-          "displayDate": "Oct 30, 2026",
-          "phase": "Pre-event",
-          "name": "Abhishek Gupta",
-          "status": "Answered",
-          "outcome": "Not set",
-          "note": "Call got disconnected in the middle."
-        }
-      ]
-    },
-    {
       "id": "UAE|finance house pjsc",
       "region": "UAE",
       "account": "Finance House PJSC",
@@ -5686,8 +5805,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|hsbc",
-      "region": "Other international",
+      "id": "Needs classification|hsbc",
+      "region": "Needs classification",
       "account": "HSBC",
       "calls": 2,
       "leads": 2,
@@ -6349,8 +6468,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|cartlow",
-      "region": "Other international",
+      "id": "US|cartlow",
+      "region": "US",
       "account": "Cartlow",
       "calls": 1,
       "leads": 1,
@@ -6745,8 +6864,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|fidelity united",
-      "region": "Other international",
+      "id": "Needs classification|fidelity united",
+      "region": "Needs classification",
       "account": "Fidelity United",
       "calls": 1,
       "leads": 1,
@@ -6778,8 +6897,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|gig gulf formerly axa gulf",
-      "region": "Other international",
+      "id": "Needs classification|gig gulf formerly axa gulf",
+      "region": "Needs classification",
       "account": "Gig Gulf Formerly Axa Gulf",
       "calls": 1,
       "leads": 1,
@@ -6976,8 +7095,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|kamal osman jamjoom group koj retail",
-      "region": "Other international",
+      "id": "Needs classification|kamal osman jamjoom group koj retail",
+      "region": "Needs classification",
       "account": "Kamal Osman Jamjoom Group Koj Retail",
       "calls": 1,
       "leads": 1,
@@ -7108,8 +7227,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|national bank of oman saog",
-      "region": "Other international",
+      "id": "Needs classification|national bank of oman saog",
+      "region": "Needs classification",
       "account": "National Bank of Oman SAOG",
       "calls": 1,
       "leads": 1,
@@ -7306,8 +7425,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|rbl bank",
-      "region": "Other international",
+      "id": "Needs classification|rbl bank",
+      "region": "Needs classification",
       "account": "RBL Bank",
       "calls": 1,
       "leads": 1,
@@ -7372,8 +7491,8 @@ export const internationalOutreachData = {
       ]
     },
     {
-      "id": "Other international|revolut",
-      "region": "Other international",
+      "id": "Needs classification|revolut",
+      "region": "Needs classification",
       "account": "Revolut",
       "calls": 1,
       "leads": 1,
@@ -7953,8 +8072,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|ghazanfar bank",
-      "region": "Other international",
+      "id": "Needs classification|ghazanfar bank",
+      "region": "Needs classification",
       "account": "Ghazanfar Bank",
       "calls": 2,
       "leads": 2,
@@ -7979,8 +8098,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|northern arc capital",
-      "region": "Other international",
+      "id": "Needs classification|northern arc capital",
+      "region": "Needs classification",
       "account": "Northern Arc Capital",
       "calls": 2,
       "leads": 1,
@@ -8094,8 +8213,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|allegro pay sp. z o.o.",
-      "region": "Other international",
+      "id": "Needs classification|allegro pay sp. z o.o.",
+      "region": "Needs classification",
       "account": "Allegro Pay Sp. z o.o.",
       "calls": 1,
       "leads": 1,
@@ -8203,15 +8322,15 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|standard chartered bank",
-      "region": "Other international",
+      "id": "Needs classification|standard chartered bank",
+      "region": "Needs classification",
       "account": "Standard Chartered Bank",
-      "calls": 15,
-      "leads": 11,
+      "calls": 13,
+      "leads": 9,
       "connected": 0,
       "notesCount": 0,
       "meetingSignals": 0,
-      "preEventCalls": 15,
+      "preEventCalls": 13,
       "postEventCalls": 0,
       "lastTouch": "2026-10-30",
       "latestOutcome": "No outcome recorded",
@@ -8227,12 +8346,6 @@ export const internationalOutreachData = {
         },
         {
           "name": "Yoonus Ahammed"
-        },
-        {
-          "name": "Majed Mohammad"
-        },
-        {
-          "name": "Uzair Kapadia"
         },
         {
           "name": "Haytham Agabani"
@@ -8354,6 +8467,75 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
+      "id": "UAE|first abu dhabi bank (fab)",
+      "region": "UAE",
+      "account": "First Abu Dhabi Bank (FAB)",
+      "calls": 10,
+      "leads": 4,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 10,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-29",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "BFSI UAE INDIAN",
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Shigi Mathew"
+        },
+        {
+          "name": "Suhail Bin Tarraf"
+        },
+        {
+          "name": "Srinivasan Sampath"
+        },
+        {
+          "name": "Divyesh Vithlani"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "UAE|zand bank pjsc",
+      "region": "UAE",
+      "account": "Zand Bank PJSC",
+      "calls": 10,
+      "leads": 5,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 10,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-29",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Haishan Wu"
+        },
+        {
+          "name": "Ahsan Sharif"
+        },
+        {
+          "name": "Yao Jun"
+        },
+        {
+          "name": "Michael Chan"
+        },
+        {
+          "name": "Michael Chan"
+        }
+      ],
+      "notes": []
+    },
+    {
       "id": "UAE|al fuad exchange",
       "region": "UAE",
       "account": "Al Fuad Exchange",
@@ -8403,6 +8585,36 @@ export const internationalOutreachData = {
         },
         {
           "name": "Ayman Zaaqoq"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "UAE|emirates hospitals group",
+      "region": "UAE",
+      "account": "Emirates Hospitals Group",
+      "calls": 8,
+      "leads": 3,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 8,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-29",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Kunal Agarwal"
+        },
+        {
+          "name": "Christian Schuhmacher"
+        },
+        {
+          "name": "Jean-paul Smalls"
         }
       ],
       "notes": []
@@ -8510,35 +8722,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|zand bank pjsc",
-      "region": "Other international",
-      "account": "Zand Bank PJSC",
-      "calls": 7,
-      "leads": 3,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 7,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Yao Jun"
-        },
-        {
-          "name": "Michael Chan"
-        },
-        {
-          "name": "Michael Chan"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|arab african international bank",
       "region": "UAE",
       "account": "Arab African international bank",
@@ -8557,37 +8740,6 @@ export const internationalOutreachData = {
       "contacts": [
         {
           "name": "Reem abouzeid"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "UAE|first abu dhabi bank (fab)",
-      "region": "UAE",
-      "account": "First Abu Dhabi Bank (FAB)",
-      "calls": 6,
-      "leads": 3,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 6,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "BFSI UAE INDIAN",
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Shigi Mathew"
-        },
-        {
-          "name": "Suhail Bin Tarraf"
-        },
-        {
-          "name": "Srinivasan Sampath"
         }
       ],
       "notes": []
@@ -8714,32 +8866,6 @@ export const internationalOutreachData = {
         },
         {
           "name": "Emmanuel Sese"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|sbi holdings, inc.",
-      "region": "Other international",
-      "account": "SBI Holdings, Inc.",
-      "calls": 6,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 6,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-26",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Yangte Kim"
-        },
-        {
-          "name": "Ryosuke Hayashi"
         }
       ],
       "notes": []
@@ -8915,35 +9041,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|chalhoub group",
-      "region": "Other international",
-      "account": "Chalhoub Group",
-      "calls": 5,
-      "leads": 3,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 5,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-30",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Nehaal Kadge"
-        },
-        {
-          "name": "Magdalena Giersz"
-        },
-        {
-          "name": "Patrick Chalhoub"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|dubai national insurance",
       "region": "UAE",
       "account": "Dubai National Insurance",
@@ -8985,32 +9082,6 @@ export const internationalOutreachData = {
       "contacts": [
         {
           "name": "Ali Moosa"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|emirates hospitals group",
-      "region": "Other international",
-      "account": "Emirates Hospitals Group",
-      "calls": 5,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 5,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Kunal Agarwal"
-        },
-        {
-          "name": "Christian Schuhmacher"
         }
       ],
       "notes": []
@@ -9070,8 +9141,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|magrabi retail magrabi optical",
-      "region": "Other international",
+      "id": "Needs classification|magrabi retail magrabi optical",
+      "region": "Needs classification",
       "account": "Magrabi Retail Magrabi Optical",
       "calls": 5,
       "leads": 1,
@@ -9128,40 +9199,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|mashreq bank",
-      "region": "Other international",
-      "account": "Mashreq Bank",
-      "calls": 5,
-      "leads": 4,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 5,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Mohamed Galal"
-        },
-        {
-          "name": "Adarsh Desai"
-        },
-        {
-          "name": "Yogesh Kapur"
-        },
-        {
-          "name": "Fernando Morillo"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|middlesex university dubai",
-      "region": "Other international",
+      "id": "UAE|middlesex university dubai",
+      "region": "UAE",
       "account": "Middlesex university dubai",
       "calls": 5,
       "leads": 1,
@@ -9204,32 +9243,6 @@ export const internationalOutreachData = {
         },
         {
           "name": "Ammar Al Malik"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|abu dhabi commercial bank (adcb)",
-      "region": "Other international",
-      "account": "Abu Dhabi Commercial Bank (ADCB)",
-      "calls": 4,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 4,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-21",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Shameek Kundu"
-        },
-        {
-          "name": "Pedro Sousa Cardoso"
         }
       ],
       "notes": []
@@ -9316,8 +9329,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|albatha group",
-      "region": "Other international",
+      "id": "US|albatha group",
+      "region": "US",
       "account": "Albatha Group",
       "calls": 4,
       "leads": 1,
@@ -9464,32 +9477,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|citi",
-      "region": "Other international",
-      "account": "Citi",
-      "calls": 4,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 4,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "David Carroll"
-        },
-        {
-          "name": "Neha powar"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|damac properties",
       "region": "UAE",
       "account": "DAMAC Properties",
@@ -9546,8 +9533,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|deutsche bank",
-      "region": "Other international",
+      "id": "Needs classification|deutsche bank",
+      "region": "Needs classification",
       "account": "Deutsche Bank",
       "calls": 4,
       "leads": 2,
@@ -9594,29 +9581,6 @@ export const internationalOutreachData = {
         },
         {
           "name": "Khalifa Rabba"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|first abu dhabi bank (fab)",
-      "region": "Other international",
-      "account": "First Abu Dhabi Bank (FAB)",
-      "calls": 4,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 4,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-15",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Divyesh Vithlani"
         }
       ],
       "notes": []
@@ -9761,8 +9725,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|princess sumaya university for technology",
-      "region": "Other international",
+      "id": "Needs classification|princess sumaya university for technology",
+      "region": "Needs classification",
       "account": "Princess Sumaya University For Technology",
       "calls": 4,
       "leads": 1,
@@ -9807,6 +9771,29 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
+      "id": "US|sbi holdings, inc.",
+      "region": "US",
+      "account": "SBI Holdings, Inc.",
+      "calls": 4,
+      "leads": 1,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 4,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-26",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Yangte Kim"
+        }
+      ],
+      "notes": []
+    },
+    {
       "id": "UAE|seha (abu dhabi health services company - purehealth)",
       "region": "UAE",
       "account": "SEHA (Abu Dhabi Health Services Company - PureHealth)",
@@ -9830,8 +9817,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|tide business banking",
-      "region": "Other international",
+      "id": "Needs classification|tide business banking",
+      "region": "Needs classification",
       "account": "Tide Business Banking",
       "calls": 4,
       "leads": 1,
@@ -9881,8 +9868,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|wego",
-      "region": "Other international",
+      "id": "Needs classification|wego",
+      "region": "Needs classification",
       "account": "Wego",
       "calls": 4,
       "leads": 1,
@@ -9931,6 +9918,30 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
+      "id": "UAE|adcb",
+      "region": "UAE",
+      "account": "ADCB",
+      "calls": 3,
+      "leads": 1,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 3,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-29",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Arvind Iyer"
+        }
+      ],
+      "notes": []
+    },
+    {
       "id": "UAE|al ansari financial services (al ansari exchange)",
       "region": "UAE",
       "account": "Al Ansari Financial Services (Al Ansari Exchange)",
@@ -9953,6 +9964,32 @@ export const internationalOutreachData = {
         },
         {
           "name": "Rashed A. Al Ansari"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "UAE|al futtaim group",
+      "region": "UAE",
+      "account": "Al Futtaim Group",
+      "calls": 3,
+      "leads": 2,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 3,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-28",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Nagarajan Kanagamani"
+        },
+        {
+          "name": "Linda Memmi"
         }
       ],
       "notes": []
@@ -10063,8 +10100,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|arab african international bank",
-      "region": "Other international",
+      "id": "Needs classification|arab african international bank",
+      "region": "Needs classification",
       "account": "Arab African international bank",
       "calls": 3,
       "leads": 1,
@@ -10137,11 +10174,11 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|commercial bank of dubai",
-      "region": "Other international",
-      "account": "Commercial Bank of Dubai",
+      "id": "UAE|buyanyinsurance uae",
+      "region": "UAE",
+      "account": "Buyanyinsurance uae",
       "calls": 3,
-      "leads": 2,
+      "leads": 1,
       "connected": 0,
       "notesCount": 0,
       "meetingSignals": 0,
@@ -10150,14 +10187,85 @@ export const internationalOutreachData = {
       "lastTouch": "2026-10-26",
       "latestOutcome": "No outcome recorded",
       "campaigns": [
+        "BFSI UAE INDIAN",
         "One Off Call"
       ],
       "contacts": [
         {
-          "name": "Martins Berzins"
+          "name": "Nikhil Bansal"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "Needs classification|citi",
+      "region": "Needs classification",
+      "account": "Citi",
+      "calls": 3,
+      "leads": 1,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 3,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-28",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Neha powar"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "UAE|cleveland clinic abu dhabi",
+      "region": "UAE",
+      "account": "Cleveland Clinic Abu Dhabi",
+      "calls": 3,
+      "leads": 2,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 3,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-15",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Bryan Lord"
         },
         {
-          "name": "Max Boulat"
+          "name": "Jorge Guzman"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "UAE|damac group",
+      "region": "UAE",
+      "account": "DAMAC GROUP",
+      "calls": 3,
+      "leads": 1,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 3,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-30",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Krishank Gohil"
         }
       ],
       "notes": []
@@ -10234,33 +10342,6 @@ export const internationalOutreachData = {
       "contacts": [
         {
           "name": "Rajeev Chopra"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "UAE|emirates hospitals group",
-      "region": "UAE",
-      "account": "Emirates Hospitals Group",
-      "calls": 3,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 3,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Kunal Agarwal"
-        },
-        {
-          "name": "Jean-paul Smalls"
         }
       ],
       "notes": []
@@ -10415,8 +10496,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|ls.ca",
-      "region": "Other international",
+      "id": "US|ls.ca",
+      "region": "US",
       "account": "ls.ca",
       "calls": 3,
       "leads": 1,
@@ -10438,8 +10519,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|national bank of kuwait nbk",
-      "region": "Other international",
+      "id": "Needs classification|national bank of kuwait nbk",
+      "region": "Needs classification",
       "account": "National Bank Of Kuwait Nbk",
       "calls": 3,
       "leads": 1,
@@ -10775,8 +10856,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|unspecified account",
-      "region": "Other international",
+      "id": "Needs classification|unspecified account",
+      "region": "Needs classification",
       "account": "Unspecified account",
       "calls": 3,
       "leads": 2,
@@ -10801,8 +10882,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|wasabicard",
-      "region": "Other international",
+      "id": "Needs classification|wasabicard",
+      "region": "Needs classification",
       "account": "WasabiCard",
       "calls": 3,
       "leads": 2,
@@ -10874,8 +10955,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|yubi",
-      "region": "Other international",
+      "id": "Needs classification|yubi",
+      "region": "Needs classification",
       "account": "Yubi",
       "calls": 3,
       "leads": 1,
@@ -10892,32 +10973,6 @@ export const internationalOutreachData = {
       "contacts": [
         {
           "name": "Gaurav Kumar"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "UAE|zand bank pjsc",
-      "region": "UAE",
-      "account": "Zand Bank PJSC",
-      "calls": 3,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 3,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Haishan Wu"
-        },
-        {
-          "name": "Ahsan Sharif"
         }
       ],
       "notes": []
@@ -10972,29 +11027,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|adcb",
-      "region": "Other international",
-      "account": "ADCB",
-      "calls": 2,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Arvind Iyer"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|al ahalia money exchange bureau",
       "region": "UAE",
       "account": "Al Ahalia Money Exchange Bureau",
@@ -11041,8 +11073,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|al fardan exchange",
-      "region": "Other international",
+      "id": "Needs classification|al fardan exchange",
+      "region": "Needs classification",
       "account": "Al Fardan Exchange",
       "calls": 2,
       "leads": 2,
@@ -11062,29 +11094,6 @@ export const internationalOutreachData = {
         },
         {
           "name": "Chandresh Ranjan"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|al futtaim group",
-      "region": "Other international",
-      "account": "Al Futtaim Group",
-      "calls": 2,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Nagarajan Kanagamani"
         }
       ],
       "notes": []
@@ -11232,8 +11241,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|aw rostamani",
-      "region": "Other international",
+      "id": "Needs classification|aw rostamani",
+      "region": "Needs classification",
       "account": "AW Rostamani",
       "calls": 2,
       "leads": 1,
@@ -11396,8 +11405,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|bnp paribas",
-      "region": "Other international",
+      "id": "Needs classification|bnp paribas",
+      "region": "Needs classification",
       "account": "BNP Paribas",
       "calls": 2,
       "leads": 2,
@@ -11471,29 +11480,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "UAE|buyanyinsurance uae",
-      "region": "UAE",
-      "account": "Buyanyinsurance uae",
-      "calls": 2,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-26",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "BFSI UAE INDIAN"
-      ],
-      "contacts": [
-        {
-          "name": "Nikhil Bansal"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|central bank of the uae",
       "region": "UAE",
       "account": "Central Bank of the UAE",
@@ -11520,8 +11506,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|chemmanur international jewellers",
-      "region": "Other international",
+      "id": "Needs classification|chemmanur international jewellers",
+      "region": "Needs classification",
       "account": "Chemmanur International Jewellers",
       "calls": 2,
       "leads": 1,
@@ -11570,29 +11556,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "UAE|cleveland clinic abu dhabi",
-      "region": "UAE",
-      "account": "Cleveland Clinic Abu Dhabi",
-      "calls": 2,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-15",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Bryan Lord"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "Philippines|cocolife",
       "region": "Philippines",
       "account": "Cocolife",
@@ -11619,9 +11582,9 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|damac group",
-      "region": "Other international",
-      "account": "DAMAC GROUP",
+      "id": "UAE|damac properties llc",
+      "region": "UAE",
+      "account": "Damac Properties LLC",
       "calls": 2,
       "leads": 1,
       "connected": 0,
@@ -11629,14 +11592,15 @@ export const internationalOutreachData = {
       "meetingSignals": 0,
       "preEventCalls": 2,
       "postEventCalls": 0,
-      "lastTouch": "2026-10-30",
+      "lastTouch": "2026-10-29",
       "latestOutcome": "No outcome recorded",
       "campaigns": [
+        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned",
         "One Off Call"
       ],
       "contacts": [
         {
-          "name": "Krishank Gohil"
+          "name": "John George"
         }
       ],
       "notes": []
@@ -11902,55 +11866,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|first abu dhabi bank",
-      "region": "Other international",
-      "account": "First Abu Dhabi Bank",
-      "calls": 2,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Shrutika Poyrekar"
-        },
-        {
-          "name": "Nitin Bhandari"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|flydubai",
-      "region": "Other international",
-      "account": "flydubai",
-      "calls": 2,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Anupam Tripathi"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|forte healthcare project management llc",
       "region": "UAE",
       "account": "Forte Healthcare Project Management LLC",
@@ -11998,32 +11913,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|habib bank ag zurich",
-      "region": "Other international",
-      "account": "Habib Bank AG Zurich",
-      "calls": 2,
-      "leads": 2,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-27",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Sateesh Balani"
-        },
-        {
-          "name": "Muhammad Asif"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|hadi express exchange",
       "region": "UAE",
       "account": "Hadi Express Exchange",
@@ -12047,8 +11936,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|hbl bank uk",
-      "region": "Other international",
+      "id": "US|hbl bank uk",
+      "region": "US",
       "account": "HBL Bank UK",
       "calls": 2,
       "leads": 1,
@@ -12093,8 +11982,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|homecentre - landmark group",
-      "region": "Other international",
+      "id": "UAE|homecentre - landmark group",
+      "region": "UAE",
       "account": "Homecentre - Landmark Group",
       "calls": 2,
       "leads": 1,
@@ -12140,8 +12029,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|invest bank",
-      "region": "Other international",
+      "id": "Needs classification|invest bank",
+      "region": "Needs classification",
       "account": "Invest Bank",
       "calls": 2,
       "leads": 1,
@@ -12163,8 +12052,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|islamic arab insurance",
-      "region": "Other international",
+      "id": "Needs classification|islamic arab insurance",
+      "region": "Needs classification",
       "account": "Islamic arab insurance",
       "calls": 2,
       "leads": 1,
@@ -12186,8 +12075,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|jordan ahli bank",
-      "region": "Other international",
+      "id": "Needs classification|jordan ahli bank",
+      "region": "Needs classification",
       "account": "Jordan Ahli Bank",
       "calls": 2,
       "leads": 1,
@@ -12280,8 +12169,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|landmark",
-      "region": "Other international",
+      "id": "Needs classification|landmark",
+      "region": "Needs classification",
       "account": "Landmark",
       "calls": 2,
       "leads": 2,
@@ -12301,29 +12190,6 @@ export const internationalOutreachData = {
         },
         {
           "name": "Ankur Saxena"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|landmark group",
-      "region": "Other international",
-      "account": "Landmark Group",
-      "calls": 2,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-14",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Vikram Idnani"
         }
       ],
       "notes": []
@@ -12353,8 +12219,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|leaseplan emirates l.l.c",
-      "region": "Other international",
+      "id": "UAE|leaseplan emirates l.l.c",
+      "region": "UAE",
       "account": "LeasePlan Emirates L.L.C",
       "calls": 2,
       "leads": 1,
@@ -12446,8 +12312,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|liva insurance",
-      "region": "Other international",
+      "id": "Needs classification|liva insurance",
+      "region": "Needs classification",
       "account": "LIVA INSURANCE",
       "calls": 2,
       "leads": 1,
@@ -12538,31 +12404,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|majid al futtaim",
-      "region": "Other international",
-      "account": "Majid Al Futtaim",
-      "calls": 2,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 2,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Ocean Jangda"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|mediobanca s.p.a.",
-      "region": "Other international",
+      "id": "Needs classification|mediobanca s.p.a.",
+      "region": "Needs classification",
       "account": "Mediobanca S.p.A.",
       "calls": 2,
       "leads": 2,
@@ -12610,8 +12453,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|nas neuron health services nnhs",
-      "region": "Other international",
+      "id": "Needs classification|nas neuron health services nnhs",
+      "region": "Needs classification",
       "account": "Nas Neuron Health Services Nnhs",
       "calls": 2,
       "leads": 1,
@@ -12680,8 +12523,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|photonpay",
-      "region": "Other international",
+      "id": "Needs classification|photonpay",
+      "region": "Needs classification",
       "account": "PhotonPay",
       "calls": 2,
       "leads": 2,
@@ -12729,8 +12572,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|rak bank",
-      "region": "Other international",
+      "id": "Needs classification|rak bank",
+      "region": "Needs classification",
       "account": "Rak Bank",
       "calls": 2,
       "leads": 2,
@@ -12805,6 +12648,29 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
+      "id": "Needs classification|sbi holdings, inc.",
+      "region": "Needs classification",
+      "account": "SBI Holdings, Inc.",
+      "calls": 2,
+      "leads": 1,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 2,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-23",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Ryosuke Hayashi"
+        }
+      ],
+      "notes": []
+    },
+    {
       "id": "UAE|sobha realty",
       "region": "UAE",
       "account": "Sobha Realty",
@@ -12823,6 +12689,32 @@ export const internationalOutreachData = {
       "contacts": [
         {
           "name": "Francis Alfred"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "US|standard chartered bank",
+      "region": "US",
+      "account": "Standard chartered bank",
+      "calls": 2,
+      "leads": 2,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 2,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-28",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Majed Mohammad"
+        },
+        {
+          "name": "Uzair Kapadia"
         }
       ],
       "notes": []
@@ -12851,8 +12743,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|terminals holding",
-      "region": "Other international",
+      "id": "Needs classification|terminals holding",
+      "region": "Needs classification",
       "account": "Terminals Holding",
       "calls": 2,
       "leads": 1,
@@ -12897,8 +12789,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|terrapay",
-      "region": "Other international",
+      "id": "Needs classification|terrapay",
+      "region": "Needs classification",
       "account": "TerraPay",
       "calls": 2,
       "leads": 2,
@@ -12970,8 +12862,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|trudoc healthcare llc",
-      "region": "Other international",
+      "id": "Needs classification|trudoc healthcare llc",
+      "region": "Needs classification",
       "account": "Trudoc Healthcare LLC",
       "calls": 2,
       "leads": 1,
@@ -13017,8 +12909,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|upstox",
-      "region": "Other international",
+      "id": "Needs classification|upstox",
+      "region": "Needs classification",
       "account": "Upstox",
       "calls": 2,
       "leads": 1,
@@ -13086,31 +12978,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "UAE|adcb",
-      "region": "UAE",
-      "account": "ADCB",
-      "calls": 1,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 1,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned"
-      ],
-      "contacts": [
-        {
-          "name": "Arvind Iyer"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|ajman bank",
-      "region": "Other international",
+      "id": "Needs classification|ajman bank",
+      "region": "Needs classification",
       "account": "Ajman Bank",
       "calls": 1,
       "leads": 1,
@@ -13201,31 +13070,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "UAE|al futtaim group",
-      "region": "UAE",
-      "account": "Al Futtaim Group",
-      "calls": 1,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 1,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-26",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Linda Memmi"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|al ghurair investments",
-      "region": "Other international",
+      "id": "Needs classification|al ghurair investments",
+      "region": "Needs classification",
       "account": "Al Ghurair Investments",
       "calls": 1,
       "leads": 1,
@@ -13270,8 +13116,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|al wathba national insurance company",
-      "region": "Other international",
+      "id": "Needs classification|al wathba national insurance company",
+      "region": "Needs classification",
       "account": "Al Wathba National Insurance Company",
       "calls": 1,
       "leads": 1,
@@ -13293,8 +13139,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|aldar",
-      "region": "Other international",
+      "id": "Needs classification|aldar",
+      "region": "Needs classification",
       "account": "ALDAR",
       "calls": 1,
       "leads": 1,
@@ -13431,8 +13277,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|antler",
-      "region": "Other international",
+      "id": "Needs classification|antler",
+      "region": "Needs classification",
       "account": "Antler",
       "calls": 1,
       "leads": 1,
@@ -13500,8 +13346,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|arada developments",
-      "region": "Other international",
+      "id": "Needs classification|arada developments",
+      "region": "Needs classification",
       "account": "Arada Developments",
       "calls": 1,
       "leads": 1,
@@ -13523,8 +13369,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|arbor ventures",
-      "region": "Other international",
+      "id": "Needs classification|arbor ventures",
+      "region": "Needs classification",
       "account": "Arbor Ventures",
       "calls": 1,
       "leads": 1,
@@ -13661,8 +13507,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|bajaj finance limited (bajaj pay)",
-      "region": "Other international",
+      "id": "Needs classification|bajaj finance limited (bajaj pay)",
+      "region": "Needs classification",
       "account": "Bajaj Finance Limited (Bajaj Pay)",
       "calls": 1,
       "leads": 1,
@@ -13684,8 +13530,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|bakkt, inc.",
-      "region": "Other international",
+      "id": "Needs classification|bakkt, inc.",
+      "region": "Needs classification",
       "account": "Bakkt, Inc.",
       "calls": 1,
       "leads": 1,
@@ -13753,8 +13599,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|baraka",
-      "region": "Other international",
+      "id": "US|baraka",
+      "region": "US",
       "account": "Baraka",
       "calls": 1,
       "leads": 1,
@@ -13799,8 +13645,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|bharatpe",
-      "region": "Other international",
+      "id": "Needs classification|bharatpe",
+      "region": "Needs classification",
       "account": "BharatPe",
       "calls": 1,
       "leads": 1,
@@ -13845,8 +13691,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|blackrock",
-      "region": "Other international",
+      "id": "US|blackrock",
+      "region": "US",
       "account": "BlackRock",
       "calls": 1,
       "leads": 1,
@@ -13891,8 +13737,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|bny",
-      "region": "Other international",
+      "id": "Needs classification|bny",
+      "region": "Needs classification",
       "account": "BNY",
       "calls": 1,
       "leads": 1,
@@ -13914,8 +13760,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|botswana stock exchange (bse)",
-      "region": "Other international",
+      "id": "Needs classification|botswana stock exchange (bse)",
+      "region": "Needs classification",
       "account": "Botswana Stock Exchange (BSE)",
       "calls": 1,
       "leads": 1,
@@ -13960,8 +13806,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|burjeel holdings",
-      "region": "Other international",
+      "id": "Needs classification|burjeel holdings",
+      "region": "Needs classification",
       "account": "Burjeel Holdings",
       "calls": 1,
       "leads": 1,
@@ -13978,29 +13824,6 @@ export const internationalOutreachData = {
       "contacts": [
         {
           "name": "Pradeep Shilige"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|buyanyinsurance uae",
-      "region": "Other international",
-      "account": "Buyanyinsurance uae",
-      "calls": 1,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 1,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-21",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Nikhil Bansal"
         }
       ],
       "notes": []
@@ -14052,8 +13875,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|central bank of the republic of t? rkiye (cbrt)",
-      "region": "Other international",
+      "id": "US|central bank of the republic of t? rkiye (cbrt)",
+      "region": "US",
       "account": "Central Bank of the Republic of T? rkiye (CBRT)",
       "calls": 1,
       "leads": 1,
@@ -14075,8 +13898,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|certik",
-      "region": "Other international",
+      "id": "US|certik",
+      "region": "US",
       "account": "CertiK",
       "calls": 1,
       "leads": 1,
@@ -14098,8 +13921,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|checkout.com",
-      "region": "Other international",
+      "id": "Needs classification|checkout.com",
+      "region": "Needs classification",
       "account": "Checkout.com",
       "calls": 1,
       "leads": 1,
@@ -14167,9 +13990,9 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|cleveland clinic abu dhabi",
-      "region": "Other international",
-      "account": "Cleveland Clinic Abu Dhabi",
+      "id": "US|citi",
+      "region": "US",
+      "account": "Citi",
       "calls": 1,
       "leads": 1,
       "connected": 0,
@@ -14177,21 +14000,21 @@ export const internationalOutreachData = {
       "meetingSignals": 0,
       "preEventCalls": 1,
       "postEventCalls": 0,
-      "lastTouch": "2026-10-14",
+      "lastTouch": "2026-10-28",
       "latestOutcome": "No outcome recorded",
       "campaigns": [
         "One Off Call"
       ],
       "contacts": [
         {
-          "name": "Jorge Guzman"
+          "name": "David Carroll"
         }
       ],
       "notes": []
     },
     {
-      "id": "Other international|cordant",
-      "region": "Other international",
+      "id": "US|cordant",
+      "region": "US",
       "account": "Cordant",
       "calls": 1,
       "leads": 1,
@@ -14213,8 +14036,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|creditas",
-      "region": "Other international",
+      "id": "Needs classification|creditas",
+      "region": "Needs classification",
       "account": "Creditas",
       "calls": 1,
       "leads": 1,
@@ -14259,77 +14082,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "UAE|damac group",
-      "region": "UAE",
-      "account": "DAMAC GROUP",
-      "calls": 1,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 1,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned"
-      ],
-      "contacts": [
-        {
-          "name": "Krishank Gohil"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "UAE|damac properties llc",
-      "region": "UAE",
-      "account": "Damac Properties LLC",
-      "calls": 1,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 1,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-29",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "Dubai_FinTech_Summit_Indian_Origin_Ranked_Leads_Cleaned"
-      ],
-      "contacts": [
-        {
-          "name": "John George"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|damac properties llc",
-      "region": "Other international",
-      "account": "Damac Properties LLC",
-      "calls": 1,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 1,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-27",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "John George"
-        }
-      ],
-      "notes": []
-    },
-    {
-      "id": "Other international|damas jewellery",
-      "region": "Other international",
+      "id": "Needs classification|damas jewellery",
+      "region": "Needs classification",
       "account": "Damas Jewellery",
       "calls": 1,
       "leads": 1,
@@ -14351,8 +14105,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|danube properties",
-      "region": "Other international",
+      "id": "Needs classification|danube properties",
+      "region": "Needs classification",
       "account": "Danube Properties",
       "calls": 1,
       "leads": 1,
@@ -14397,8 +14151,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|deep finance capital",
-      "region": "Other international",
+      "id": "Needs classification|deep finance capital",
+      "region": "Needs classification",
       "account": "Deep Finance Capital",
       "calls": 1,
       "leads": 1,
@@ -14443,8 +14197,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|doha bank",
-      "region": "Other international",
+      "id": "Needs classification|doha bank",
+      "region": "Needs classification",
       "account": "Doha Bank",
       "calls": 1,
       "leads": 1,
@@ -14604,8 +14358,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|dubizzle group bayut dubizzle",
-      "region": "Other international",
+      "id": "US|dubizzle group bayut dubizzle",
+      "region": "US",
       "account": "Dubizzle Group Bayut Dubizzle",
       "calls": 1,
       "leads": 1,
@@ -14627,8 +14381,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|eagle hills",
-      "region": "Other international",
+      "id": "Needs classification|eagle hills",
+      "region": "Needs classification",
       "account": "Eagle Hills",
       "calls": 1,
       "leads": 1,
@@ -14765,29 +14519,6 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|fab",
-      "region": "Other international",
-      "account": "FAB",
-      "calls": 1,
-      "leads": 1,
-      "connected": 0,
-      "notesCount": 0,
-      "meetingSignals": 0,
-      "preEventCalls": 1,
-      "postEventCalls": 0,
-      "lastTouch": "2026-10-28",
-      "latestOutcome": "No outcome recorded",
-      "campaigns": [
-        "One Off Call"
-      ],
-      "contacts": [
-        {
-          "name": "Abhishek Gupta"
-        }
-      ],
-      "notes": []
-    },
-    {
       "id": "UAE|fidelity united insurance",
       "region": "UAE",
       "account": "Fidelity United Insurance",
@@ -14811,8 +14542,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|fidelity united insurance",
-      "region": "Other international",
+      "id": "Needs classification|fidelity united insurance",
+      "region": "Needs classification",
       "account": "Fidelity United Insurance",
       "calls": 1,
       "leads": 1,
@@ -14834,8 +14565,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|finance house",
-      "region": "Other international",
+      "id": "Needs classification|finance house",
+      "region": "Needs classification",
       "account": "Finance House",
       "calls": 1,
       "leads": 1,
@@ -14857,8 +14588,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|financial conduct authority (fca uk)",
-      "region": "Other international",
+      "id": "Needs classification|financial conduct authority (fca uk)",
+      "region": "Needs classification",
       "account": "Financial Conduct Authority (FCA UK)",
       "calls": 1,
       "leads": 1,
@@ -14903,8 +14634,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|franklin templeton",
-      "region": "Other international",
+      "id": "US|franklin templeton",
+      "region": "US",
       "account": "Franklin Templeton",
       "calls": 1,
       "leads": 1,
@@ -14949,8 +14680,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|gargash insurance",
-      "region": "Other international",
+      "id": "Needs classification|gargash insurance",
+      "region": "Needs classification",
       "account": "Gargash Insurance",
       "calls": 1,
       "leads": 1,
@@ -14972,8 +14703,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|global studies institute",
-      "region": "Other international",
+      "id": "US|global studies institute",
+      "region": "US",
       "account": "Global Studies Institute",
       "calls": 1,
       "leads": 1,
@@ -14990,6 +14721,52 @@ export const internationalOutreachData = {
       "contacts": [
         {
           "name": "Mohamed Dobashi"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "US|habib bank ag zurich",
+      "region": "US",
+      "account": "Habib Bank AG Zurich",
+      "calls": 1,
+      "leads": 1,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 1,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-27",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Sateesh Balani"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "Needs classification|habib bank ag zurich",
+      "region": "Needs classification",
+      "account": "Habib Bank AG Zurich",
+      "calls": 1,
+      "leads": 1,
+      "connected": 0,
+      "notesCount": 0,
+      "meetingSignals": 0,
+      "preEventCalls": 1,
+      "postEventCalls": 0,
+      "lastTouch": "2026-10-19",
+      "latestOutcome": "No outcome recorded",
+      "campaigns": [
+        "One Off Call"
+      ],
+      "contacts": [
+        {
+          "name": "Muhammad Asif"
         }
       ],
       "notes": []
@@ -15110,8 +14887,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|hayah insurance company p. j. s. c.",
-      "region": "Other international",
+      "id": "Needs classification|hayah insurance company p. j. s. c.",
+      "region": "Needs classification",
       "account": "HAYAH Insurance Company P. J. S. C.",
       "calls": 1,
       "leads": 1,
@@ -15225,8 +15002,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|hsbc asset management",
-      "region": "Other international",
+      "id": "Needs classification|hsbc asset management",
+      "region": "Needs classification",
       "account": "HSBC Asset Management",
       "calls": 1,
       "leads": 1,
@@ -15248,8 +15025,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|hsbc bank",
-      "region": "Other international",
+      "id": "Needs classification|hsbc bank",
+      "region": "Needs classification",
       "account": "HSBC Bank",
       "calls": 1,
       "leads": 1,
@@ -15363,8 +15140,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|icapital",
-      "region": "Other international",
+      "id": "Needs classification|icapital",
+      "region": "Needs classification",
       "account": "iCapital",
       "calls": 1,
       "leads": 1,
@@ -15386,8 +15163,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|icici bank",
-      "region": "Other international",
+      "id": "US|icici bank",
+      "region": "US",
       "account": "ICICI bank",
       "calls": 1,
       "leads": 1,
@@ -15409,8 +15186,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|informer payments bv",
-      "region": "Other international",
+      "id": "Needs classification|informer payments bv",
+      "region": "Needs classification",
       "account": "Informer Payments BV",
       "calls": 1,
       "leads": 1,
@@ -15570,8 +15347,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|julius baer group ltd.",
-      "region": "Other international",
+      "id": "Needs classification|julius baer group ltd.",
+      "region": "Needs classification",
       "account": "Julius Baer Group Ltd.",
       "calls": 1,
       "leads": 1,
@@ -15662,8 +15439,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|kings college hospital london dubai",
-      "region": "Other international",
+      "id": "UAE|kings college hospital london dubai",
+      "region": "UAE",
       "account": "Kings College Hospital London Dubai",
       "calls": 1,
       "leads": 1,
@@ -15708,8 +15485,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|landmark group - lifestyle",
-      "region": "Other international",
+      "id": "UAE|landmark group - lifestyle",
+      "region": "UAE",
       "account": "LANDMARK GROUP - LIFESTYLE",
       "calls": 1,
       "leads": 1,
@@ -15869,8 +15646,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|majid al futtaim global solutions",
-      "region": "Other international",
+      "id": "UAE|majid al futtaim global solutions",
+      "region": "UAE",
       "account": "Majid AL Futtaim Global Solutions",
       "calls": 1,
       "leads": 1,
@@ -15938,8 +15715,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|medgulf",
-      "region": "Other international",
+      "id": "Needs classification|medgulf",
+      "region": "Needs classification",
       "account": "MEDGULF",
       "calls": 1,
       "leads": 1,
@@ -15984,8 +15761,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|mh alshaya group",
-      "region": "Other international",
+      "id": "Needs classification|mh alshaya group",
+      "region": "Needs classification",
       "account": "MH Alshaya Group",
       "calls": 1,
       "leads": 1,
@@ -16007,8 +15784,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|morgan stanley",
-      "region": "Other international",
+      "id": "US|morgan stanley",
+      "region": "US",
       "account": "Morgan Stanley",
       "calls": 1,
       "leads": 1,
@@ -16099,8 +15876,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|national bank of oman saog (nbo)",
-      "region": "Other international",
+      "id": "Needs classification|national bank of oman saog (nbo)",
+      "region": "Needs classification",
       "account": "National Bank of Oman SAOG (NBO)",
       "calls": 1,
       "leads": 1,
@@ -16145,8 +15922,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|national stock exchange of india (nse)",
-      "region": "Other international",
+      "id": "Needs classification|national stock exchange of india (nse)",
+      "region": "Needs classification",
       "account": "National Stock Exchange of India (NSE)",
       "calls": 1,
       "leads": 1,
@@ -16191,8 +15968,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|nikai group of companies",
-      "region": "Other international",
+      "id": "US|nikai group of companies",
+      "region": "US",
       "account": "Nikai Group of Companies",
       "calls": 1,
       "leads": 1,
@@ -16237,8 +16014,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|now money",
-      "region": "Other international",
+      "id": "US|now money",
+      "region": "US",
       "account": "Now Money",
       "calls": 1,
       "leads": 1,
@@ -16260,8 +16037,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|omniyat group",
-      "region": "Other international",
+      "id": "US|omniyat group",
+      "region": "US",
       "account": "Omniyat Group",
       "calls": 1,
       "leads": 1,
@@ -16421,8 +16198,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|primary healthcare centers",
-      "region": "Other international",
+      "id": "Needs classification|primary healthcare centers",
+      "region": "Needs classification",
       "account": "Primary Healthcare Centers",
       "calls": 1,
       "leads": 1,
@@ -16467,8 +16244,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|purehealth",
-      "region": "Other international",
+      "id": "Needs classification|purehealth",
+      "region": "Needs classification",
       "account": "PureHealth",
       "calls": 1,
       "leads": 1,
@@ -16490,8 +16267,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|pyypl",
-      "region": "Other international",
+      "id": "Needs classification|pyypl",
+      "region": "Needs classification",
       "account": "Pyypl",
       "calls": 1,
       "leads": 1,
@@ -16536,8 +16313,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|rak hospital",
-      "region": "Other international",
+      "id": "Needs classification|rak hospital",
+      "region": "Needs classification",
       "account": "Rak Hospital",
       "calls": 1,
       "leads": 1,
@@ -16582,8 +16359,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|rak hospital arabian healthcare group",
-      "region": "Other international",
+      "id": "Needs classification|rak hospital arabian healthcare group",
+      "region": "Needs classification",
       "account": "Rak Hospital Arabian Healthcare Group",
       "calls": 1,
       "leads": 1,
@@ -16605,8 +16382,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|rak national insurance company rak insurance",
-      "region": "Other international",
+      "id": "Needs classification|rak national insurance company rak insurance",
+      "region": "Needs classification",
       "account": "Rak National Insurance Company Rak Insurance",
       "calls": 1,
       "leads": 1,
@@ -16674,8 +16451,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|rakbank (the national bank of ras al khaimah)",
-      "region": "Other international",
+      "id": "Needs classification|rakbank (the national bank of ras al khaimah)",
+      "region": "Needs classification",
       "account": "RAKBANK (The National Bank of Ras Al Khaimah)",
       "calls": 1,
       "leads": 1,
@@ -16720,8 +16497,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|remitbee",
-      "region": "Other international",
+      "id": "US|remitbee",
+      "region": "US",
       "account": "Remitbee",
       "calls": 1,
       "leads": 1,
@@ -16789,8 +16566,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|ripple",
-      "region": "Other international",
+      "id": "Needs classification|ripple",
+      "region": "Needs classification",
       "account": "Ripple",
       "calls": 1,
       "leads": 1,
@@ -16835,8 +16612,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|rotana hotels",
-      "region": "Other international",
+      "id": "Needs classification|rotana hotels",
+      "region": "Needs classification",
       "account": "Rotana Hotels",
       "calls": 1,
       "leads": 1,
@@ -16904,8 +16681,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|sc ventures",
-      "region": "Other international",
+      "id": "Needs classification|sc ventures",
+      "region": "Needs classification",
       "account": "SC Ventures",
       "calls": 1,
       "leads": 1,
@@ -17042,8 +16819,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|standard bank group",
-      "region": "Other international",
+      "id": "Needs classification|standard bank group",
+      "region": "Needs classification",
       "account": "Standard Bank Group",
       "calls": 1,
       "leads": 1,
@@ -17088,8 +16865,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|standard chartered",
-      "region": "Other international",
+      "id": "Needs classification|standard chartered",
+      "region": "Needs classification",
       "account": "Standard Chartered",
       "calls": 1,
       "leads": 1,
@@ -17157,8 +16934,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|standard chartered bank difc branch",
-      "region": "Other international",
+      "id": "Needs classification|standard chartered bank difc branch",
+      "region": "Needs classification",
       "account": "Standard Chartered Bank DIFC Branch",
       "calls": 1,
       "leads": 1,
@@ -17180,8 +16957,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|state bank of india",
-      "region": "Other international",
+      "id": "Needs classification|state bank of india",
+      "region": "Needs classification",
       "account": "State Bank of India",
       "calls": 1,
       "leads": 1,
@@ -17387,8 +17164,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|thought machine",
-      "region": "Other international",
+      "id": "Needs classification|thought machine",
+      "region": "Needs classification",
       "account": "Thought Machine",
       "calls": 1,
       "leads": 1,
@@ -17456,8 +17233,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|union coop",
-      "region": "Other international",
+      "id": "US|union coop",
+      "region": "US",
       "account": "Union Coop",
       "calls": 1,
       "leads": 1,
@@ -17502,8 +17279,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|united bank limited",
-      "region": "Other international",
+      "id": "Needs classification|united bank limited",
+      "region": "Needs classification",
       "account": "United Bank Limited",
       "calls": 1,
       "leads": 1,
@@ -17548,8 +17325,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|unqork",
-      "region": "Other international",
+      "id": "US|unqork",
+      "region": "US",
       "account": "Unqork",
       "calls": 1,
       "leads": 1,
@@ -17571,8 +17348,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|van lanschot kempen",
-      "region": "Other international",
+      "id": "Needs classification|van lanschot kempen",
+      "region": "Needs classification",
       "account": "Van Lanschot Kempen",
       "calls": 1,
       "leads": 1,
@@ -17640,8 +17417,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|via medica international healthcare",
-      "region": "Other international",
+      "id": "Needs classification|via medica international healthcare",
+      "region": "Needs classification",
       "account": "Via Medica International Healthcare",
       "calls": 1,
       "leads": 1,
@@ -17709,8 +17486,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|visa",
-      "region": "Other international",
+      "id": "US|visa",
+      "region": "US",
       "account": "Visa",
       "calls": 1,
       "leads": 1,
@@ -17755,8 +17532,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|vision bank ltd",
-      "region": "Other international",
+      "id": "Needs classification|vision bank ltd",
+      "region": "Needs classification",
       "account": "Vision Bank Ltd",
       "calls": 1,
       "leads": 1,
@@ -17801,8 +17578,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|watania international holding watania takaful",
-      "region": "Other international",
+      "id": "Needs classification|watania international holding watania takaful",
+      "region": "Needs classification",
       "account": "Watania International Holding Watania Takaful",
       "calls": 1,
       "leads": 1,
@@ -17847,8 +17624,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|wio bank",
-      "region": "Other international",
+      "id": "Needs classification|wio bank",
+      "region": "Needs classification",
       "account": "Wio Bank",
       "calls": 1,
       "leads": 1,
@@ -17916,8 +17693,8 @@ export const internationalOutreachData = {
       "notes": []
     },
     {
-      "id": "Other international|zurich insurance company",
-      "region": "Other international",
+      "id": "US|zurich insurance company",
+      "region": "US",
       "account": "Zurich Insurance Company",
       "calls": 1,
       "leads": 1,
@@ -17943,4 +17720,4 @@ export const internationalOutreachData = {
 
 export type InternationalOutreachData = typeof internationalOutreachData;
 export type OutreachAccount = InternationalOutreachData["accounts"][number];
-export type OutreachRegion = "US" | "UAE" | "Philippines" | "Other international" | "All international";
+export type OutreachRegion = "US" | "UAE" | "Philippines" | "Needs classification" | "All non-USA";

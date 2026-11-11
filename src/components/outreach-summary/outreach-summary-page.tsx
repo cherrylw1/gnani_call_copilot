@@ -41,22 +41,22 @@ type Summary = SummaryBase & {
 };
 
 const tabs: Array<{ label: string; value: OutreachRegion }> = [
-  { label: "All international", value: "All international" },
+  { label: "All non-USA", value: "All non-USA" },
   { label: "UAE", value: "UAE" },
   { label: "Philippines", value: "Philippines" },
-  { label: "Other international", value: "Other international" },
+  { label: "Needs classification", value: "Needs classification" },
   { label: "US", value: "US" }
 ];
 
 export function OutreachSummaryPage({ data }: Props) {
-  const [region, setRegion] = useState<OutreachRegion>("All international");
+  const [region, setRegion] = useState<OutreachRegion>("All non-USA");
   const [phase, setPhase] = useState<"All activity" | "Pre-event" | "Post-event">("All activity");
   const [query, setQuery] = useState("");
   const [selectedAccount, setSelectedAccount] = useState<OutreachAccount | null>(null);
 
   const baseSummary = useMemo<Summary>(() => {
     if (region === "US") return data.us as Summary;
-    if (region === "All international") return data.allInternational as Summary;
+    if (region === "All non-USA") return data.allNonUSA as Summary;
     return data.regions[region] as Summary;
   }, [data, region]);
 
@@ -70,7 +70,7 @@ export function OutreachSummaryPage({ data }: Props) {
     if (region === "US") return [];
     const meetingAccountNames = new Set(uaeMeetingsData.meetings.map((meeting) => normalizeAccountName(meeting.company)));
     return data.accounts.filter((account) => {
-      if (region !== "All international" && account.region !== region) return false;
+      if (region !== "All non-USA" && account.region !== region) return false;
       if (phase === "Pre-event" && account.preEventCalls === 0) return false;
       if (phase === "Post-event" && account.postEventCalls === 0) return false;
       if (!normalizedQuery) return true;
@@ -90,7 +90,7 @@ export function OutreachSummaryPage({ data }: Props) {
           <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-400">Explore accounts, call notes, event timing, and regional outcomes in one view. Select an account to open its full interaction history.</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <span className="inline-flex h-9 items-center rounded-full border border-white/10 bg-white/[0.035] px-3 text-xs text-zinc-400">Dubai Fintech Summit · Nov 2–3</span>
+          <span className="inline-flex h-9 items-center rounded-full border border-white/10 bg-white/[0.035] px-3 text-xs text-zinc-400">{region === "US" ? "US campaign rollup" : "Dubai Fintech Summit · Nov 2–3"}</span>
           <Link href="/call-report" className="focus-ring inline-flex h-9 items-center gap-2 rounded-lg border border-white/10 bg-white/[0.035] px-3 text-xs text-zinc-300 transition hover:bg-white/[0.07] hover:text-white">Open call report<ArrowUpRight className="size-3.5" /></Link>
         </div>
       </header>
@@ -99,7 +99,7 @@ export function OutreachSummaryPage({ data }: Props) {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-emerald-200/80"><CheckCircle2 className="size-4" />Executive readout</div>
-            <p className="mt-4 text-lg leading-8 tracking-[-0.02em] text-zinc-100 md:text-xl">The international export now includes the underlying account notes, contact names, and call outcomes—not just topline counts.</p>
+            <p className="mt-4 text-lg leading-8 tracking-[-0.02em] text-zinc-100 md:text-xl">{heroCopy(region)}</p>
           </div>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:min-w-[38rem]">
             <MiniStat label="Accounts" value={formatNumber(summary.accounts)} />
@@ -155,22 +155,30 @@ function AccountRow({ account, meeting, onOpen }: { account: OutreachAccount; me
 function EmptyState({ text }: { text: string }) { return <div className="rounded-xl border border-dashed border-white/10 p-6 text-center text-xs text-zinc-600">{text}</div>; }
 function AccountDrawer({ account, onClose }: { account: OutreachAccount; onClose: () => void }) { return <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}><aside className="h-full w-full max-w-2xl overflow-y-auto border-l border-white/10 bg-[#0c1012] p-5 shadow-2xl md:p-7"><div className="flex items-start justify-between gap-4"><div><p className="text-[10px] uppercase tracking-[0.15em] text-emerald-300/80">{account.region} · account detail</p><h2 className="mt-2 text-2xl font-semibold tracking-[-0.04em] text-zinc-100">{account.account}</h2><p className="mt-2 text-xs text-zinc-500">{account.calls} calls · {account.contacts.length} leads · {account.notesCount} notes · last touch {account.lastTouch || "—"}</p></div><button type="button" onClick={onClose} aria-label="Close account detail" className="rounded-lg p-2 text-zinc-500 transition hover:bg-white/[0.06] hover:text-zinc-100"><X className="size-4" /></button></div><div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4"><MiniStat label="Calls" value={`${account.calls}`} /><MiniStat label="Connected" value={`${account.connected}`} /><MiniStat label="Pre-event" value={`${account.preEventCalls}`} /><MiniStat label="Post-event" value={`${account.postEventCalls}`} /></div><section className="mt-7"><div className="flex items-center gap-2 text-sm font-medium text-zinc-200"><UsersRound className="size-4 text-emerald-200" />Contacts</div><div className="mt-3 space-y-2">{account.contacts.map((contact) => <div key={contact.name} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-3"><p className="text-sm text-zinc-200">{contact.name}</p></div>)}</div></section><section className="mt-7"><div className="flex items-center gap-2 text-sm font-medium text-zinc-200"><FileText className="size-4 text-emerald-200" />Call notes & outcomes</div><div className="mt-3 space-y-3">{account.notes.length ? account.notes.map((note) => <article key={`${note.date}-${note.name}-${note.note}`} className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4"><div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] text-zinc-600"><span>{note.displayDate}</span><span>·</span><span>{note.phase}</span><span>·</span><span>{note.status}</span><span>·</span><span>{note.outcome}</span></div><p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-zinc-300">{note.note}</p><div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-500"><span>{note.name}</span><span className="text-zinc-700">Call details available in the call report.</span></div></article>) : <EmptyState text="No call notes were recorded for this account." />}</div></section><section className="mt-7"><div className="flex items-center gap-2 text-sm font-medium text-zinc-200"><PhoneCall className="size-4 text-emerald-200" />Campaigns</div><div className="mt-3 flex flex-wrap gap-2">{account.campaigns.map((campaign) => <span key={campaign} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[10px] text-zinc-500">{campaign}</span>)}</div></section></aside></div>; }
 
+function heroCopy(region: OutreachRegion) {
+  if (region === "US") return "US outreach is shown from the larger US campaign rollup, with the meeting tracker and account-level explorer below.";
+  if (region === "UAE") return "UAE outreach combines call activity, the scheduled demo tracker, account notes, and pre/post-event movement.";
+  if (region === "Philippines") return "Philippines outreach combines call activity, account notes, and the WhatsApp handoff to Fazal at InfiniWall.";
+  if (region === "Needs classification") return "A small set of records needs a confident country assignment before it is moved into UAE, Philippines, or US.";
+  return "All non-USA outreach combines UAE, Philippines, and records that still need a confident country assignment.";
+}
+
 function formatNumber(value: number) { return value.toLocaleString("en-US"); }
 
 function MeetingMovement({ region, phase, summary, data }: { region: OutreachRegion; phase: "All activity" | "Pre-event" | "Post-event"; summary: SummaryBase; data: InternationalOutreachData }) {
   if (region === "US") return <OutcomeRows rows={[["US tracker records", `${usMeetingsData.summary.total}`, "Rows in the supplied schedule"], ["US meetings combined", `${data.us.meetingsCombined ?? 15}`, "Current US reporting input"], ["Confirmed SAL accounts", `${data.us.confirmedSALs ?? 2}`, "TCL Philippines · Dubai Islamic Bank"], ["MRR contribution", data.us.mrr ?? "₹3,00,000", "Two confirmed SAL accounts"]]} />;
   if (region === "UAE") return <OutcomeRows rows={[[`${phase === "All activity" ? "UAE calls" : `${phase} UAE calls`}`, `${summary.calls.toLocaleString()}`, `${summary.connected.toLocaleString()} connected`], ["UAE meetings booked · pre-event", `${data.event.uaeMeetingsPreEvent}`, "Calls through November 1"], ["UAE meetings booked · post-event", `${data.event.uaeMeetingsPostEvent}`, "Calls from November 2 onward"], ["UAE scheduled tracker", `${uaeMeetingsData.summary.total}`, `${uaeMeetingsData.summary.upcoming} upcoming · ${uaeMeetingsData.summary.awaitingResponse} awaiting response`]]} />;
   if (region === "Philippines") return <OutcomeRows rows={[[`${phase === "All activity" ? "Philippines calls" : `${phase} Philippines calls`}`, `${summary.calls.toLocaleString()}`, `${summary.connected.toLocaleString()} connected`], ["WhatsApp conversations", `${data.event.philippinesWhatsAppConversations}`, `Forwarded to ${data.event.philippinesWhatsAppOwner}`], ["Account notes", `${summary.notes.toLocaleString()}`, "Notes captured in the call export"]]} />;
-  if (region === "Other international") return <OutcomeRows rows={[["Other international calls", `${summary.calls.toLocaleString()}`, `${summary.connected.toLocaleString()} connected`], ["Pre-event calls", `${summary.preEventCalls.toLocaleString()}`, "Through November 1"], ["Post-event calls", `${summary.postEventCalls.toLocaleString()}`, "From November 2 onward"], ["Account notes", `${summary.notes.toLocaleString()}`, "Notes captured in the call export"]]} />;
-  return <OutcomeRows rows={[[`${phase === "All activity" ? "All international calls" : `${phase} international calls`}`, `${summary.calls.toLocaleString()}`, `${summary.connected.toLocaleString()} connected`], ["Pre-event calls", `${phase === "All activity" ? summary.preEventCalls.toLocaleString() : phase === "Pre-event" ? summary.calls.toLocaleString() : "0"}`, "Through November 1"], ["Post-event calls", `${phase === "All activity" ? summary.postEventCalls.toLocaleString() : phase === "Post-event" ? summary.calls.toLocaleString() : "0"}`, "From November 2 onward"], ["Account notes", `${summary.notes.toLocaleString()}`, "Notes captured across UAE, Philippines, and other international"]]} />;
+  if (region === "Needs classification") return <OutcomeRows rows={[["Unclassified calls", `${summary.calls.toLocaleString()}`, `${summary.connected.toLocaleString()} connected`], ["Pre-event calls", `${summary.preEventCalls.toLocaleString()}`, "Through November 1"], ["Post-event calls", `${summary.postEventCalls.toLocaleString()}`, "From November 2 onward"], ["Account notes", `${summary.notes.toLocaleString()}`, "Records needing a confident UAE, Philippines, or US assignment"]]} />;
+  return <OutcomeRows rows={[[`${phase === "All activity" ? "All non-USA calls" : `${phase} non-USA calls`}`, `${summary.calls.toLocaleString()}`, `${summary.connected.toLocaleString()} connected`], ["Pre-event calls", `${phase === "All activity" ? summary.preEventCalls.toLocaleString() : phase === "Pre-event" ? summary.calls.toLocaleString() : "0"}`, "Through November 1"], ["Post-event calls", `${phase === "All activity" ? summary.postEventCalls.toLocaleString() : phase === "Post-event" ? summary.calls.toLocaleString() : "0"}`, "From November 2 onward"], ["Account notes", `${summary.notes.toLocaleString()}`, "Notes across UAE, Philippines, and records needing classification"]]} />;
 }
 
 function RegionalContext({ region, data }: { region: OutreachRegion; data: InternationalOutreachData }) {
   if (region === "Philippines") return <div className="rounded-xl border border-sky-300/15 bg-sky-300/[0.05] p-4"><div className="flex items-center gap-2 text-sm text-sky-100"><MessageCircle className="size-4" />WhatsApp handoff</div><p className="mt-4 font-mono text-4xl tracking-[-0.07em] text-zinc-100">{data.event.philippinesWhatsAppConversations}</p><p className="mt-2 text-xs leading-5 text-zinc-500">Conversations forwarded to {data.event.philippinesWhatsAppOwner}.</p></div>;
   if (region === "UAE") return <div className="space-y-2"><Handoff label="Scheduled demos" value={`${uaeMeetingsData.summary.total}`} detail={`${uaeMeetingsData.summary.upcoming} upcoming · ${uaeMeetingsData.summary.today} today`} /><Handoff label="Awaiting response" value={`${uaeMeetingsData.summary.awaitingResponse}`} detail="Tentative or pending lead confirmation" /><Handoff label="UAE account notes" value={`${data.regions.UAE.notes}`} detail="Notes available in the account explorer" /></div>;
-  if (region === "Other international") return <div className="space-y-2"><Handoff label="Calls" value={`${data.regions["Other international"].calls.toLocaleString()}`} detail={`${data.regions["Other international"].connected} connected`} /><Handoff label="Account notes" value={`${data.regions["Other international"].notes}`} detail="Notes captured in the export" /></div>;
+  if (region === "Needs classification") return <div className="space-y-2"><Handoff label="Needs classification" value={`${data.regions["Needs classification"].calls.toLocaleString()} calls`} detail={`${data.regions["Needs classification"].accounts} accounts need a country assignment`} /><Handoff label="Review rule" value="Manual" detail="Only confident phone, source, or company signals are assigned automatically" /></div>;
   if (region === "US") return <div className="space-y-2"><Handoff label="US accounts" value={`${usAccountsData.summary.accounts.toLocaleString()}`} detail="Account explorer loaded from the US call export" /><Handoff label="Meeting-booked accounts" value={`${usAccountsData.summary.meetingBooked}`} detail="Prioritized at the top of the explorer" /></div>;
-  return <div className="space-y-2"><Handoff label="UAE" value={`${data.regions.UAE.calls.toLocaleString()} calls`} detail={`${data.regions.UAE.notes} notes · ${uaeMeetingsData.summary.total} scheduled demos`} /><Handoff label="Philippines" value={`${data.regions.Philippines.calls.toLocaleString()} calls`} detail={`${data.event.philippinesWhatsAppConversations} WhatsApp conversations forwarded`} /><Handoff label="Other international" value={`${data.regions["Other international"].calls.toLocaleString()} calls`} detail={`${data.regions["Other international"].notes} notes captured`} /></div>;
+  return <div className="space-y-2"><Handoff label="UAE" value={`${data.regions.UAE.calls.toLocaleString()} calls`} detail={`${data.regions.UAE.notes} notes · ${uaeMeetingsData.summary.total} scheduled demos`} /><Handoff label="Philippines" value={`${data.regions.Philippines.calls.toLocaleString()} calls`} detail={`${data.event.philippinesWhatsAppConversations} WhatsApp conversations forwarded`} /><Handoff label="Needs classification" value={`${data.regions["Needs classification"].calls.toLocaleString()} calls`} detail={`${data.regions["Needs classification"].accounts} accounts kept separate`} /></div>;
 }
 
 function UAEMeetingTracker() {
